@@ -16,11 +16,13 @@ public class EncargadoController {
 
     private static EncargadoModel encMod = new EncargadoModel();
 
-    public List<Encargado> crearEncargado(List<Encargado> lista2, Encargado encargado) {// Agreagar
+    public List<Encargado> crearEncargado(List<Encargado> lista2,
+            Encargado encargado) {// Agreagar
         return encMod.crearEncargado(lista2, encargado);
     }
 
-    public List<Encargado> eliminarEncargado(List<Encargado> lista2, String codTrab) {// Eliminar
+    public List<Encargado> eliminarEncargado(List<Encargado> lista2,
+            String codTrab) {// Eliminar
         return encMod.eliminarEncargado(lista2, codTrab);
     }
 
@@ -28,11 +30,13 @@ public class EncargadoController {
         encMod.mostrarEncargado(lista, modelo);
     }
 
-    public Encargado getEncargado(List<Encargado> lista, String CodTrab) {// Buscar
+    public Encargado getEncargado(List<Encargado> lista, String CodTrab) {
+// Buscar
         return encMod.getEncargado(lista, CodTrab);
     }
 
-    public List<Encargado> actualizarEncargado(List<Encargado> lista, Encargado encargado) {// Actualizar
+    public List<Encargado> actualizarEncargado(List<Encargado> lista,
+            Encargado encargado) {// Actualizar
         return encMod.actualizarEncargado(lista, encargado);
     }
 }

@@ -12,12 +12,14 @@ import pojo.Encargado;
 
 public class EncargadoModel {
 
-    public List<Encargado> crearEncargado(List<Encargado> lista2, Encargado encargado) {// agregamos objetos a la lista
+    public List<Encargado> crearEncargado(List<Encargado> lista2,
+            Encargado encargado) {// agregamos objetos a la lista
         lista2.add(encargado);
         return lista2;
     }
 
-    public List<Encargado> eliminarEncargado(List<Encargado> lista, String codTrab) {// eliminamos un objeto de la lista
+    public List<Encargado> eliminarEncargado(List<Encargado> lista,
+            String codTrab) {// eliminamos un objeto de la lista
         for (Encargado encargado : lista) {
             if (codTrab.compareTo(encargado.getCodTrab()) == 0) {
                 lista.remove(encargado);
@@ -27,7 +29,8 @@ public class EncargadoModel {
         return lista;
     }
 
-    public void mostrarEncargado(List<Encargado> lista, DefaultTableModel modelo) {// Imprimimos el contenido de la lista
+    public void mostrarEncargado(List<Encargado> lista,
+            DefaultTableModel modelo) {// Imprimimos el contenido de la lista
         modelo.setRowCount(0);
         for (int i = 0; i < lista.size(); i++) {
             Object[] fila = new Object[3];
@@ -38,7 +41,8 @@ public class EncargadoModel {
         }
     }
 
-    public Encargado getEncargado(List<Encargado> lista, String CodTrab) {// Buscamos un objeto a tavés de su código
+    public Encargado getEncargado(List<Encargado> lista, String CodTrab) {
+        // Buscamos un objeto a tavés de su código
         Encargado vacio = null;
         for (Encargado encargado : lista) {
             if (CodTrab.compareTo(encargado.getCodTrab()) == 0) {
@@ -49,9 +53,11 @@ public class EncargadoModel {
     }
 
     // Actualizamos datos de un objeto de la lista
-    public List<Encargado> actualizarEncargado(List<Encargado> lista, Encargado encargado) {
+    public List<Encargado> actualizarEncargado(List<Encargado> lista,
+            Encargado encargado) {
         for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getCodTrab().compareTo(encargado.getCodTrab()) == 0) {
+            if (lista.get(i).getCodTrab().compareTo(encargado.getCodTrab())
+                    == 0) {
                 lista.set(i, encargado);
                 break;
             }

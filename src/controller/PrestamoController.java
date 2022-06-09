@@ -16,24 +16,30 @@ public class PrestamoController {
 
     private static PrestamoModel prestam = new PrestamoModel();
 
-    public List<Prestamo> crearPrestamo(List<Prestamo> lista, Prestamo prest) {// Agregar
+    public List<Prestamo> crearPrestamo(List<Prestamo> lista, Prestamo prest) {
+        // Agregar
         return prestam.crearPrestamo(lista, prest);
     }
 
-    public Prestamo getPrestamo(List<Prestamo> lista, Prestamo prestamo) {// Buscar
+    public Prestamo getPrestamo(List<Prestamo> lista, Prestamo prestamo) {
+        // Buscar
         return prestam.getPrestamo(lista, prestamo);
     }
 
-    public List<Prestamo> eliminarPrestamo(List<Prestamo> lista, Prestamo prestamo) {// Eliminar
+    public List<Prestamo> eliminarPrestamo(List<Prestamo> lista,
+            Prestamo prestamo) {// Eliminar
         return prestam.eliminarPrestamo(lista, prestamo);
     }
 
-    public void mostrarPrestamo(List<Prestamo> lista, List<Libro> listaLibro, List<Encargado> listaEncargado,
+    public void mostrarPrestamo(List<Prestamo> lista, List<Libro> listaLibro,
+            List<Encargado> listaEncargado,
             List<Usuario> listaUsuario, DefaultTableModel modelo) {// Mostrar
-        prestam.mostrarPrestamo(lista, listaLibro, listaEncargado, listaUsuario, modelo);
+        prestam.mostrarPrestamo(lista, listaLibro, listaEncargado, listaUsuario,
+                modelo);
     }
 
-    public List<Prestamo> actualizarPrestamo(List<Prestamo> lista, int id, Prestamo prestamo) {
+    public List<Prestamo> actualizarPrestamo(List<Prestamo> lista, int id,
+            Prestamo prestamo) {
         return prestam.actualizarPrestamo(lista, id, prestamo);
 
     }

@@ -25,15 +25,18 @@ public class LibroController {
         return lib.getLibro(lista, isbn);
     }
 
-    public List<Libro> eliminarLibro(List<Libro> lista, String isbn) {// Eliminar
+    public List<Libro> eliminarLibro(List<Libro> lista, String isbn) {
+        // Eliminar
         return lib.eliminarLibro(lista, isbn);
     }
 
-    public void mostrarlibro(List<Libro> lista, DefaultTableModel modelo) {// Mostrar
+    public void mostrarlibro(List<Libro> lista, DefaultTableModel modelo) {
+        // Mostrar
         lib.mostrarlibro(lista, modelo);
     }
 
-    public List<Libro> actualizarLibro(List<Libro> lista, Libro libro) {// Actualizar
+    public List<Libro> actualizarLibro(List<Libro> lista, Libro libro) {
+        // Actualizar
         return lib.actualizarLibro(lista, libro);
     }
 }

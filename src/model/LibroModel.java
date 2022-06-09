@@ -12,13 +12,15 @@ import pojo.Libro;
 
 public class LibroModel {
 
-    public List<Libro> crearLibro(List<Libro> lista, Libro libro) {// Agrega objetos a la lista
+    public List<Libro> crearLibro(List<Libro> lista, Libro libro) {
+        // Agrega objetos a la lista
         lista.add(libro);
         return lista;
 
     }
 
-    public Libro getLibro(List<Libro> lista, String isbn) {// Busca un objeto libro en la lista
+    public Libro getLibro(List<Libro> lista, String isbn) {
+        // Busca un objeto libro en la lista
         Libro vacio = null;
         for (Libro libro : lista) {
             if (isbn.compareTo(libro.getIsbn()) == 0) {
@@ -28,7 +30,8 @@ public class LibroModel {
         return vacio;
     }
 
-    public List<Libro> eliminarLibro(List<Libro> lista, String isbn) {// Busca y elimina un objeto
+    public List<Libro> eliminarLibro(List<Libro> lista, String isbn) {
+        // Busca y elimina un objeto
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getIsbn().compareTo(isbn) == 0) {
                 lista.remove(i);
@@ -38,7 +41,8 @@ public class LibroModel {
         return lista;
     }
 
-    public void mostrarlibro(List<Libro> lista, DefaultTableModel modelo) {// Imprime el contenido de la lista
+    public void mostrarlibro(List<Libro> lista, DefaultTableModel modelo) {
+        // Imprime el contenido de la lista
         modelo.setRowCount(0);//resetea la tabla
         for (int i = 0; i < lista.size(); i++) {
             Object[] fila = new Object[5];
@@ -51,7 +55,8 @@ public class LibroModel {
         }
     }
 
-    public List<Libro> actualizarLibro(List<Libro> lista, Libro libro1) {// Actualiza los datos															// de un libro
+    public List<Libro> actualizarLibro(List<Libro> lista, Libro libro1) {
+        // Actualiza los datos															// de un libro
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getIsbn().compareTo(libro1.getIsbn()) == 0) {
                 lista.set(i, libro1);

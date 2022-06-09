@@ -20,7 +20,8 @@ public class Prestamo {
     public Prestamo() {
     }
 
-    public Prestamo(int id, String fechaSol, String fechaEnt, List<String> nombres, String matricula, String codTrab,
+    public Prestamo(int id, String fechaSol, String fechaEnt,
+            List<String> nombres, String matricula, String codTrab,
             String isbn) {
         super();
         this.id = id;

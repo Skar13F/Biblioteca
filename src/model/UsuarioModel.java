@@ -12,12 +12,14 @@ import pojo.Usuario;
 
 public class UsuarioModel {
 
-    public List<Usuario> crearUsuario(List<Usuario> lista, Usuario usuario) {// Agregamos objetos a la lista
+    public List<Usuario> crearUsuario(List<Usuario> lista, Usuario usuario) {
+        // Agregamos objetos a la lista
         lista.add(usuario);
         return lista;
     }
 
-    public List<Usuario> eliminarUsuario(List<Usuario> lista, String matricula) {// Buscamos y eliminamos un objeto
+    public List<Usuario> eliminarUsuario(List<Usuario> lista,
+            String matricula) {// Buscamos y eliminamos un objeto
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getMatricula().compareTo(matricula) == 0) {
                 lista.remove(i);
@@ -27,7 +29,8 @@ public class UsuarioModel {
         return lista;
     }
 
-    public void mostrarUsuario(List<Usuario> lista, DefaultTableModel modelo) {// Imprimimos el contenido de la lista
+    public void mostrarUsuario(List<Usuario> lista, DefaultTableModel modelo) {
+        // Imprimimos el contenido de la lista
         modelo.setRowCount(0);//resetea la tabla
         for (int i = 0; i < lista.size(); i++) {
             Object[] fila = new Object[4];
@@ -39,7 +42,8 @@ public class UsuarioModel {
         }
     }
 
-    public Usuario getUsuario(List<Usuario> lista, String matricula) {// Buscamos un objeto a través de la matrícula
+    public Usuario getUsuario(List<Usuario> lista, String matricula) {
+        // Buscamos un objeto a través de la matrícula
         Usuario vacio = null;
         for (Usuario usuario : lista) {
             if (matricula.compareTo(usuario.getMatricula()) == 0) {
@@ -50,9 +54,11 @@ public class UsuarioModel {
     }
 
     // Actualizamos los datos de un objeto
-    public List<Usuario> actualizarUsuario(List<Usuario> lista, Usuario usuario) {
+    public List<Usuario> actualizarUsuario(List<Usuario> lista,
+            Usuario usuario) {
         for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getMatricula().compareTo(usuario.getMatricula()) == 0) {
+            if (lista.get(i).getMatricula().compareTo(
+                    usuario.getMatricula()) == 0) {
                 lista.set(i, usuario);
                 break;
             }

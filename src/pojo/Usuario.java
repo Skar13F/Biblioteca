@@ -22,9 +22,11 @@ public class Usuario {
 
     }
 
-    public Usuario(String matricula, String nombre, String carrera, String semestre) {
+    public Usuario(String matricula, String nombre, String carrera,
+            String semestre) {
         /*
-		 * this: hace referencia al objeto actual de la clase. indica que se está
+		 * this: hace referencia al objeto actual de la clase. 
+                         indica que se está
 		 * referenciando al atributo global de dicha clase
          */
         this.matricula = matricula;
@@ -35,7 +37,8 @@ public class Usuario {
     // @PostConstruct: permite inicializar ibjetos al iniciar la aplicación
 
     /*
-	 * métodos: conjunto de instrucciones definidas dentro de una clase y realizan
+	 * métodos: conjunto de instrucciones definidas dentro de una clase y 
+                    realizan
 	 * una determinada tarea
      */
     public String getMatricula() {

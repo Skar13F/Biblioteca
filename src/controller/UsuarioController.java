@@ -16,15 +16,18 @@ public class UsuarioController {
 
     private static UsuarioModel userModel = new UsuarioModel();
 
-    public List<Usuario> crearUsuario(List<Usuario> lista, Usuario usuario) {// Agreagar
+    public List<Usuario> crearUsuario(List<Usuario> lista, Usuario usuario) {
+        // Agreagar
         return userModel.crearUsuario(lista, usuario);
     }
 
-    public List<Usuario> eliminarUsuario(List<Usuario> lista, String matricula) {// Eliminar
+    public List<Usuario> eliminarUsuario(List<Usuario> lista,
+            String matricula) {// Eliminar
         return userModel.eliminarUsuario(lista, matricula);
     }
 
-    public void mostrarUsuario(List<Usuario> lista, DefaultTableModel modelo) {// Mostrar
+    public void mostrarUsuario(List<Usuario> lista,
+            DefaultTableModel modelo) {// Mostrar
         userModel.mostrarUsuario(lista, modelo);
     }
 
@@ -32,7 +35,8 @@ public class UsuarioController {
         return userModel.getUsuario(lista, matricula);
     }
 
-    public List<Usuario> actualizarUsuario(List<Usuario> lista, Usuario usuario) {// Actualizar
+    public List<Usuario> actualizarUsuario(List<Usuario> lista,
+            Usuario usuario) {// Actualizar
         return userModel.actualizarUsuario(lista, usuario);
     }
 }
