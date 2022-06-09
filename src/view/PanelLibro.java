@@ -1,8 +1,13 @@
+/* Autor: Oscar Fuentes Alvarado
+ * Fecha de creación: 01 de junio de 2022
+ * Fecha de actualización: 09 de junio de 2022
+ * Descripción: clase JPanel para controlar las operaciones CRUD
+                aplicados a los objetos Libro
+ */
 package view;
 
 import controller.LibroController;
 import pojo.Libro;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -50,7 +55,7 @@ public class PanelLibro extends javax.swing.JPanel {
 
     public boolean isNumeric(String datos) {
         for (int i = 0; i < datos.length(); i++) {
-            if(Character.compare(datos.charAt(0), '1') != 0){
+            if (Character.compare(datos.charAt(0), '1') != 0) {
                 return false;
             }
             if (Character.compare(datos.charAt(i), '0') != 0
@@ -301,7 +306,8 @@ public class PanelLibro extends javax.swing.JPanel {
                 || jText_Cantidad.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else if (isNumeric(jText_Cantidad.getText())) {
-            Libro libro1 = libController.getLibro(listaLibro, jText_ISBN.getText());
+            Libro libro1 = libController.getLibro(listaLibro,
+                    jText_ISBN.getText());
             if (libro1 == null) {
                 libro = leer(libro);
 
@@ -310,11 +316,13 @@ public class PanelLibro extends javax.swing.JPanel {
 
                 listaLibro = libController.crearLibro(listaLibro, libro);
             } else {
-                JOptionPane.showMessageDialog(null, "El ISBN ya está registrado");
+                JOptionPane.showMessageDialog(null, "El ISBN ya está "
+                        + "registrado");
                 jText_ISBN.setEditable(true);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "En el campo cantidad\nsolo ingresa números positivos");
+            JOptionPane.showMessageDialog(null, "En el campo cantidad\nsolo "
+                    + "ingresa números positivos");
 
         }
 
@@ -323,16 +331,18 @@ public class PanelLibro extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //String isbn = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-
         if (jText_ISBN.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Ingresa un isbn\no rellena todos los campos");
+            JOptionPane.showMessageDialog(null, "Ingresa un isbn\no rellena "
+                    + "todos los campos");
         } else {
-            Libro libro = libController.getLibro(listaLibro, jText_ISBN.getText());
+            Libro libro = libController.getLibro(listaLibro,
+                    jText_ISBN.getText());
             if (libro == null) {
-                JOptionPane.showMessageDialog(null, "No hay registro del libro");
+                JOptionPane.showMessageDialog(null, "No hay registro "
+                        + "del libro");
             } else {
-                listaLibro = libController.eliminarLibro(listaLibro, libro.getIsbn());
+                listaLibro = libController.eliminarLibro(listaLibro,
+                        libro.getIsbn());
 
                 limpiar();
                 jText_ISBN.setEditable(true);
@@ -345,7 +355,11 @@ public class PanelLibro extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Libro libro1 = new Libro();
-        if (jText_ISBN.getText().equals("") || jText_Titulo.getText().equals("") || jText_Genero.getText().equals("") || jText_Autor.getText().equals("") || jText_Cantidad.getText().equals("")) {
+        if (jText_ISBN.getText().equals("")
+                || jText_Titulo.getText().equals("")
+                || jText_Genero.getText().equals("")
+                || jText_Autor.getText().equals("")
+                || jText_Cantidad.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
             libro1 = leer(libro1);
@@ -361,12 +375,16 @@ public class PanelLibro extends javax.swing.JPanel {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jText_ISBN.setEditable(false);
-        jText_ISBN.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
-        jText_Titulo.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
-        jText_Genero.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
-        jText_Autor.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
-
-        jText_Cantidad.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
+        jText_ISBN.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                0).toString());
+        jText_Titulo.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                1).toString());
+        jText_Genero.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                3).toString());
+        jText_Autor.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                2).toString());
+        jText_Cantidad.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                4).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

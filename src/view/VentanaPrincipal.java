@@ -1,6 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+/* Autor: Oscar Fuentes Alvarado
+ * Fecha de creación: 26 de mayo de 2022
+ * Fecha de actualización: 09 de junio de 2022
+ * Descripción: Clase JFrame para controlar el programa, aquí enlazamos
+                las clases que muestran una interfaz para cada objeto
  */
 package view;
 
@@ -14,7 +16,6 @@ import java.util.List;
 import pojo.Usuario;
 import pojo.Libro;
 import pojo.Encargado;
-import pojo.Prestamo;
 
 /**
  *
@@ -38,15 +39,14 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
         initComponents();
         this.setLocationRelativeTo(null);
 
-        
         insertar();
         panelLib = new PanelLibro(listaLibro);
         panelAlum = new PanelAlumno(listaAlumno);
         panelEnc = new PanelEncargado(listaEncargado);
         panelPrest = new PanelPrestamo(listaLibro, listaAlumno, listaEncargado);
-        
+
         contenedor.add(panelLib);
-        
+
         panelLib.setVisible(true);
         panelAlum.setVisible(false);
         panelEnc.setVisible(false);
@@ -58,7 +58,6 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
         boton_Enc.addActionListener(this);
         boton_Prest.addActionListener(this);
 
-        
     }
 
     private void deshabilitarBotones() {

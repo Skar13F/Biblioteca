@@ -1,12 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+/* Autor: Oscar Fuentes Alvarado
+ * Fecha de creación: 03 de junio de 2022
+ * Fecha de actualización: 09 de junio de 2022
+ * Descripción: clase JPanel para controlar las operaciones CRUD
+                aplicados a los objetos Alumno
  */
 package view;
 
 import controller.UsuarioController;
 import pojo.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -248,10 +249,14 @@ public class PanelAlumno extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Usuario usuario = new Usuario();
-        if (jText_Matricula.getText().equals("") || jText_Nombre.getText().equals("") || jText_Carrera.getText().equals("") || jText_Semestre.getText().equals("")) {
+        if (jText_Matricula.getText().equals("")
+                || jText_Nombre.getText().equals("")
+                || jText_Carrera.getText().equals("")
+                || jText_Semestre.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
-            Usuario usuario1 = userController.getUsuario(listaUsuario, jText_Matricula.getText());
+            Usuario usuario1 = userController.getUsuario(listaUsuario,
+                    jText_Matricula.getText());
             if (usuario1 == null) {
                 usuario.setMatricula(jText_Matricula.getText());
                 usuario.setNombre(jText_Nombre.getText());
@@ -261,9 +266,11 @@ public class PanelAlumno extends javax.swing.JPanel {
                 limpiar();
                 jText_Matricula.setEditable(true);
 
-                listaUsuario = userController.crearUsuario(listaUsuario, usuario);
+                listaUsuario = userController.crearUsuario(listaUsuario,
+                        usuario);
             } else {
-                JOptionPane.showMessageDialog(null, "La matrícula ya está registrada");
+                JOptionPane.showMessageDialog(null, "La matrícula ya está "
+                        + "registrada");
                 jText_Matricula.setEditable(true);
             }
 
@@ -274,16 +281,18 @@ public class PanelAlumno extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //String isbn = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-
         if (jText_Matricula.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Ingresa una matrícula\no rellena todos los campos");
+            JOptionPane.showMessageDialog(null, "Ingresa una matrícula\no "
+                    + "rellena todos los campos");
         } else {
-            Usuario usuario = userController.getUsuario(listaUsuario, jText_Matricula.getText());
+            Usuario usuario = userController.getUsuario(listaUsuario,
+                    jText_Matricula.getText());
             if (usuario == null) {
-                JOptionPane.showMessageDialog(null, "No hay registro del alumno");
+                JOptionPane.showMessageDialog(null, "No hay registro del "
+                        + "alumno");
             } else {
-                listaUsuario = userController.eliminarUsuario(listaUsuario, usuario.getMatricula());
+                listaUsuario = userController.eliminarUsuario(listaUsuario,
+                        usuario.getMatricula());
 
                 limpiar();
                 jText_Matricula.setEditable(true);
@@ -296,7 +305,10 @@ public class PanelAlumno extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Usuario usuario1 = new Usuario();
-        if (jText_Matricula.getText().equals("") || jText_Nombre.getText().equals("") || jText_Carrera.getText().equals("") || jText_Semestre.getText().equals("")) {
+        if (jText_Matricula.getText().equals("")
+                || jText_Nombre.getText().equals("")
+                || jText_Carrera.getText().equals("")
+                || jText_Semestre.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
 
@@ -305,7 +317,8 @@ public class PanelAlumno extends javax.swing.JPanel {
             usuario1.setCarrera(jText_Carrera.getText());
             usuario1.setSemestre(jText_Semestre.getText());
 
-            listaUsuario = userController.actualizarUsuario(listaUsuario, usuario1);
+            listaUsuario = userController.actualizarUsuario(listaUsuario,
+                    usuario1);
             userController.mostrarUsuario(listaUsuario, modelo);
 
             limpiar();
@@ -317,18 +330,24 @@ public class PanelAlumno extends javax.swing.JPanel {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jText_Matricula.setEditable(false);
-        jText_Matricula.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
-        jText_Nombre.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
-        jText_Carrera.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
-        jText_Semestre.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+        jText_Matricula.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                0).toString());
+        jText_Nombre.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                1).toString());
+        jText_Carrera.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                3).toString());
+        jText_Semestre.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                2).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Usuario ubuscar = new Usuario();
         if (jTextField1.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "ingresa la matrícula del alumno");
+            JOptionPane.showMessageDialog(null, "ingresa la matrícula del "
+                    + "alumno");
         } else {
-            ubuscar = userController.getUsuario(listaUsuario, jTextField1.getText());
+            ubuscar = userController.getUsuario(listaUsuario,
+                    jTextField1.getText());
             if (ubuscar != null) {
                 jText_Matricula.setEditable(false);
                 jText_Matricula.setText(ubuscar.getMatricula());

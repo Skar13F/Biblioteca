@@ -2,7 +2,8 @@
  * Fecha de creación: 28 de abril de 2022
  * Fecha de actualización: 08 de junio de 2022
  * Descripción: clase para responder a las interacciones entre el usuario y 
- * 				la interfaz, y realiza las peticiones al modelo para pasarlos a la vista
+ * 				la interfaz, y realiza las peticiones al modelo
+                                para pasarlos a la vista
  */
 package controller;
 

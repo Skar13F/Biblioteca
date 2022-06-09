@@ -1,3 +1,11 @@
+/* Autor: Oscar Fuentes Alvarado
+ * Fecha de creación: 01 de junio de 2022
+ * Fecha de actualización: 09 de junio de 2022
+ * Descripción: clase JPanel para controlar las operaciones CRUD
+                aplicados a los objetos Prestamos, además enlazamos
+                las listas provenientes de otros páneles para ocupar
+                su información
+ */
 package view;
 
 import controller.EncargadoController;
@@ -37,7 +45,8 @@ public class PanelPrestamo extends javax.swing.JPanel {
     /**
      * Creates new form Panel1
      */
-    public PanelPrestamo(List<Libro> listLibro, List<Usuario> listAlumno, List<Encargado> listEncargado) {
+    public PanelPrestamo(List<Libro> listLibro, List<Usuario> listAlumno,
+            List<Encargado> listEncargado) {
         initComponents();
 
         prestController = new PrestamoController();
@@ -293,59 +302,82 @@ public class PanelPrestamo extends javax.swing.JPanel {
 
         Prestamo prestamo = new Prestamo();
 
-        Usuario alumno = alumnoAux.getUsuario(listaAlumno, jText_Matricula.getText());
+        Usuario alumno = alumnoAux.getUsuario(listaAlumno,
+                jText_Matricula.getText());
         Libro libro = libroAux.getLibro(listaLibro, jText_ArrayIsbn.getText());
-        Encargado encargado = encargadoAux.getEncargado(listaEncargado, jText_Encargado.getText());
+        Encargado encargado = encargadoAux.getEncargado(listaEncargado,
+                jText_Encargado.getText());
 
-        if (jText_FechaSol.getText().equals("") || jText_FechaEnt.getText().equals("") || jText_Matricula.getText().equals("") || jText_Encargado.getText().equals("") || jText_ArrayIsbn.getText().equals("")) {
+        if (jText_FechaSol.getText().equals("")
+                || jText_FechaEnt.getText().equals("")
+                || jText_Matricula.getText().equals("")
+                || jText_Encargado.getText().equals("")
+                || jText_ArrayIsbn.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else if (alumno == null) {
-            JOptionPane.showMessageDialog(null, "El alumno no existe\nregístralo antes");
+            JOptionPane.showMessageDialog(null, "El alumno no existe\n"
+                    + "regístralo antes");
         } else if (libro == null) {
             JOptionPane.showMessageDialog(null, "El libro no existe");
         } else if (encargado == null) {
-            JOptionPane.showMessageDialog(null, "El encargado no existe\n regístralo");
+            JOptionPane.showMessageDialog(null, "El encargado no existe\n "
+                    + "regístralo");
         } else {
             prestamo = leer();
-            listaPrestamo = prestController.crearPrestamo(listaPrestamo, prestamo);
+            listaPrestamo = prestController.crearPrestamo(listaPrestamo,
+                    prestamo);
             limpiar();
             jText_FechaSol.setEditable(true);
             List<String> vacio = new ArrayList<>();
             listaIsbn = vacio;
         }
 
-        prestController.mostrarPrestamo(listaPrestamo, listaLibro, listaEncargado, listaAlumno, modelo);
+        prestController.mostrarPrestamo(listaPrestamo, listaLibro,
+                listaEncargado, listaAlumno, modelo);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if (jText_FechaSol.getText().equals("") || jText_FechaEnt.getText().equals("") || jText_Matricula.getText().equals("") || jText_Encargado.getText().equals("")) {
+        if (jText_FechaSol.getText().equals("")
+                || jText_FechaEnt.getText().equals("")
+                || jText_Matricula.getText().equals("")
+                || jText_Encargado.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
             Prestamo leerD = leer();
-            Prestamo prestamo23 = prestController.getPrestamo(listaPrestamo, leerD);
+            Prestamo prestamo23 = prestController.getPrestamo(listaPrestamo,
+                    leerD);
             //JOptionPane.showMessageDialog(null, leerD.getCodTrab());
             //JOptionPane.showMessageDialog(null, prestamo23.getCodTrab());
             if (prestamo23 != null) {
-                listaPrestamo = prestController.eliminarPrestamo(listaPrestamo, leerD);
+                listaPrestamo = prestController.eliminarPrestamo(listaPrestamo,
+                        leerD);
 
                 limpiar();
             } else {
-                JOptionPane.showMessageDialog(null, "No hay registro del prestamo");
+                JOptionPane.showMessageDialog(null, "No hay registro "
+                        + "del prestamo");
 
             }
         }
-        prestController.mostrarPrestamo(listaPrestamo, listaLibro, listaEncargado, listaAlumno, modelo);
+        prestController.mostrarPrestamo(listaPrestamo, listaLibro,
+                listaEncargado, listaAlumno, modelo);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Prestamo prestamo1 = new Prestamo();
-        if (jText_FechaSol.getText().equals("") || jText_FechaEnt.getText().equals("") || jText_Matricula.getText().equals("") || jText_Encargado.getText().equals("") || jText_ArrayIsbn.getText().equals("")) {
+        if (jText_FechaSol.getText().equals("")
+                || jText_FechaEnt.getText().equals("")
+                || jText_Matricula.getText().equals("")
+                || jText_Encargado.getText().equals("")
+                || jText_ArrayIsbn.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
             prestamo1 = leer();
-            listaPrestamo = prestController.actualizarPrestamo(listaPrestamo, id, prestamo1);
-            prestController.mostrarPrestamo(listaPrestamo, listaLibro, listaEncargado, listaAlumno, modelo);
+            listaPrestamo = prestController.actualizarPrestamo(listaPrestamo,
+                    id, prestamo1);
+            prestController.mostrarPrestamo(listaPrestamo, listaLibro,
+                    listaEncargado, listaAlumno, modelo);
 
             limpiar();
             jText_FechaSol.setEditable(true);
@@ -358,12 +390,18 @@ public class PanelPrestamo extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        id = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
-        jText_FechaSol.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
-        jText_FechaEnt.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
-        jText_Matricula.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 3).toString());
-        jText_Encargado.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 4).toString());
-        jText_ArrayIsbn.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString());
+        id = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),
+                0).toString());
+        jText_FechaSol.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                1).toString());
+        jText_FechaEnt.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                2).toString());
+        jText_Matricula.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                3).toString());
+        jText_Encargado.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                4).toString());
+        jText_ArrayIsbn.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                5).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

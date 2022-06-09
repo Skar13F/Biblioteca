@@ -1,9 +1,14 @@
+/* Autor: Oscar Fuentes Alvarado
+ * Fecha de creación: 03 de junio de 2022
+ * Fecha de actualización: 09 de junio de 2022
+ * Descripción: clase JPanel para controlar las operaciones CRUD
+                aplicados a los objetos Encargado
+ */
 package view;
 
 import controller.EncargadoController;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -233,10 +238,13 @@ public class PanelEncargado extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Encargado encargado = new Encargado();
-        if (jText_Codigo.getText().equals("") || jText_Nombre.getText().equals("") || jText_Telefono.getText().equals("")) {
+        if (jText_Codigo.getText().equals("")
+                || jText_Nombre.getText().equals("")
+                || jText_Telefono.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
-            Encargado encargado1 = encController.getEncargado(listaEncargado, jText_Codigo.getText());
+            Encargado encargado1 = encController.getEncargado(listaEncargado,
+                    jText_Codigo.getText());
             if (encargado1 == null) {
                 encargado.setCodTrab(jText_Codigo.getText());
                 encargado.setNombre(jText_Nombre.getText());
@@ -245,9 +253,11 @@ public class PanelEncargado extends javax.swing.JPanel {
                 limpiar();
                 jText_Codigo.setEditable(true);
 
-                listaEncargado = encController.crearEncargado(listaEncargado, encargado);
+                listaEncargado = encController.crearEncargado(listaEncargado,
+                        encargado);
             } else {
-                JOptionPane.showMessageDialog(null, "La código ya está registrado");
+                JOptionPane.showMessageDialog(null, "La código ya está "
+                        + "registrado");
                 jText_Codigo.setEditable(true);
             }
 
@@ -258,16 +268,18 @@ public class PanelEncargado extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //String isbn = jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString();
-
         if (jText_Codigo.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Ingresa una matrícula\no rellena todos los campos");
+            JOptionPane.showMessageDialog(null, "Ingresa una matrícula\no "
+                    + "rellena todos los campos");
         } else {
-            Encargado encargado = encController.getEncargado(listaEncargado, jText_Codigo.getText());
+            Encargado encargado = encController.getEncargado(listaEncargado,
+                    jText_Codigo.getText());
             if (encargado == null) {
-                JOptionPane.showMessageDialog(null, "No hay registro del encargado");
+                JOptionPane.showMessageDialog(null, "No hay registro del "
+                        + "encargado");
             } else {
-                listaEncargado = encController.eliminarEncargado(listaEncargado, encargado.getCodTrab());
+                listaEncargado = encController.eliminarEncargado(listaEncargado,
+                        encargado.getCodTrab());
 
                 limpiar();
                 jText_Codigo.setEditable(true);
@@ -280,7 +292,9 @@ public class PanelEncargado extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Encargado encargado1 = new Encargado();
-        if (jText_Codigo.getText().equals("") || jText_Nombre.getText().equals("") || jText_Telefono.getText().equals("")) {
+        if (jText_Codigo.getText().equals("")
+                || jText_Nombre.getText().equals("")
+                || jText_Telefono.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
 
@@ -299,17 +313,22 @@ public class PanelEncargado extends javax.swing.JPanel {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jText_Codigo.setEditable(false);
-        jText_Codigo.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
-        jText_Nombre.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 1).toString());
-        jText_Telefono.setText(jTable1.getValueAt(jTable1.getSelectedRow(), 2).toString());
+        jText_Codigo.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                0).toString());
+        jText_Nombre.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                1).toString());
+        jText_Telefono.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+                2).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Encargado eBuscar=new Encargado();
+        Encargado eBuscar = new Encargado();
         if (jTextField1.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "ingresa el código de trbajador");
+            JOptionPane.showMessageDialog(null, "ingresa el código de "
+                    + "trbajador");
         } else {
-            eBuscar = encController.getEncargado(listaEncargado, jTextField1.getText());
+            eBuscar = encController.getEncargado(listaEncargado,
+                    jTextField1.getText());
             if (eBuscar != null) {
                 jText_Codigo.setEditable(false);
                 jText_Codigo.setText(eBuscar.getCodTrab());
