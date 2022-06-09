@@ -1,6 +1,6 @@
 /* Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 25 de abril de 2022
- * Fecha de actualización: 06 de junio de 2022
+ * Fecha de actualización: 09 de junio de 2022
  * Descripción: clase para modelar las operaciones CRUD de la clase encargado
  */
 package model;
@@ -51,7 +51,7 @@ public class EncargadoModel {
     // Actualizamos datos de un objeto de la lista
     public List<Encargado> actualizarEncargado(List<Encargado> lista, Encargado encargado) {
         for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getCodTrab().compareTo(encargado.getCodTrab())==0){
+            if (lista.get(i).getCodTrab().compareTo(encargado.getCodTrab()) == 0) {
                 lista.set(i, encargado);
                 break;
             }

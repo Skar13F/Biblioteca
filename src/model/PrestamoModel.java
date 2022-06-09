@@ -1,21 +1,19 @@
 /* Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 25 de abril de 2022
- * Fecha de actualización: 30 de abril de 2022
+ * Fecha de actualización: 09 de junio de 2022
  * Descripción: clase para modelar las operaciones CRUD de la clase préstamo 
  */
 package model;
 
 import java.util.List;
 
-import controller.*;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pojo.*;
 
 public class PrestamoModel {
 
     public List<Prestamo> crearPrestamo(List<Prestamo> lista, Prestamo prest) {// añadimos objetos a la lista
-        prest.setId(lista.size()+1);
+        prest.setId(lista.size() + 1);
         lista.add(prest);
         return lista;
 
@@ -46,8 +44,7 @@ public class PrestamoModel {
         modelo.setRowCount(0);
         String isbn = "";
         for (int i = 0; i < lista.size(); i++) {
-            //prest.setId(lista.size()+1);
-            lista.get(i).setId(i+1);
+            lista.get(i).setId(i + 1);
             isbn = "";
             Object[] fila = new Object[6];
             fila[0] = lista.get(i).getId();
@@ -55,11 +52,6 @@ public class PrestamoModel {
             fila[2] = lista.get(i).getFechaEnt();
             fila[3] = lista.get(i).getMatricula();
             fila[4] = lista.get(i).getCodTrab();
-
-            /*for(String cadena:lista.get(i).getNombres()){
-                isbn += cadena + "\n";
-            }*/
-            //fila[4] = isbn;
             fila[5] = lista.get(i).getNombres();
             modelo.addRow(fila);
         }
