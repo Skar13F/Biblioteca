@@ -34,12 +34,11 @@ public class Usuario {
         this.carrera = carrera;
         this.semestre = semestre;
     }
-    // @PostConstruct: permite inicializar ibjetos al iniciar la aplicación
+    // @PostConstruct: permite inicializar objetos al iniciar la aplicación
 
     /*
 	 * métodos: conjunto de instrucciones definidas dentro de una clase y 
-                    realizan
-	 * una determinada tarea
+                    realizan una determinada tarea
      */
     public String getMatricula() {
         return matricula;
