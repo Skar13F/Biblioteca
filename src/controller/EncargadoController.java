@@ -16,27 +16,33 @@ public class EncargadoController {
 
     private static EncargadoModel encMod = new EncargadoModel();
 
+    // Método para añadir datos a la lista
     public List<Encargado> crearEncargado(List<Encargado> lista2,
-            Encargado encargado) {// Agreagar
+            Encargado encargado) {
         return encMod.crearEncargado(lista2, encargado);
     }
 
+    // Método para eliminar datos de la lista
     public List<Encargado> eliminarEncargado(List<Encargado> lista2,
-            String codTrab) {// Eliminar
+            String codTrab) {
         return encMod.eliminarEncargado(lista2, codTrab);
     }
 
-    public void mostrarEncargado(List<Encargado> lista, DefaultTableModel modelo) {// Mostrar
+    //Método para buscar un objeto en la lista
+    public Encargado getEncargado(List<Encargado> lista, String CodTrab) {
+        return encMod.getEncargado(lista, CodTrab);
+    }
+    
+    //Método para actualizar datos de un objeto
+    public List<Encargado> actualizarEncargado(List<Encargado> lista,
+            Encargado encargado) {
+        return encMod.actualizarEncargado(lista, encargado);
+    }
+    
+    //Método para mostrar (imprimir) los datos de la lista en una tabla
+    public void mostrarEncargado(List<Encargado> lista, DefaultTableModel modelo) {
         encMod.mostrarEncargado(lista, modelo);
     }
 
-    public Encargado getEncargado(List<Encargado> lista, String CodTrab) {
-// Buscar
-        return encMod.getEncargado(lista, CodTrab);
-    }
-
-    public List<Encargado> actualizarEncargado(List<Encargado> lista,
-            Encargado encargado) {// Actualizar
-        return encMod.actualizarEncargado(lista, encargado);
-    }
+    
 }

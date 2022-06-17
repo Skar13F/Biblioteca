@@ -1,6 +1,6 @@
 /* Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 25 de abril de 2022
- * Fecha de actualización: 06 de junio de 2022
+ * Fecha de actualización: 17 de junio de 2022
  * Descripción: clase para modelar las operaciones CRUD de la clase Usuario
  */
 package model;
@@ -12,14 +12,15 @@ import pojo.Usuario;
 
 public class UsuarioModel {
 
+    // Método para agregar objetos a la lista Alumno
     public List<Usuario> crearUsuario(List<Usuario> lista, Usuario usuario) {
-        // Agregamos objetos a la lista
         lista.add(usuario);
         return lista;
     }
 
+    // Método para eliminar un objeto alumno de la lista
     public List<Usuario> eliminarUsuario(List<Usuario> lista,
-            String matricula) {// Buscamos y eliminamos un objeto
+            String matricula) {
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getMatricula().compareTo(matricula) == 0) {
                 lista.remove(i);
@@ -29,21 +30,8 @@ public class UsuarioModel {
         return lista;
     }
 
-    public void mostrarUsuario(List<Usuario> lista, DefaultTableModel modelo) {
-        // Imprimimos el contenido de la lista
-        modelo.setRowCount(0);//resetea la tabla
-        for (int i = 0; i < lista.size(); i++) {
-            Object[] fila = new Object[4];
-            fila[0] = lista.get(i).getMatricula();
-            fila[1] = lista.get(i).getNombre();
-            fila[2] = lista.get(i).getCarrera();
-            fila[3] = lista.get(i).getSemestre();
-            modelo.addRow(fila);
-        }
-    }
-
+    //Método para buscar un objeto en la lista, retorna nulo si no lo encuentra
     public Usuario getUsuario(List<Usuario> lista, String matricula) {
-        // Buscamos un objeto a través de la matrícula
         Usuario vacio = null;
         for (Usuario usuario : lista) {
             if (matricula.compareTo(usuario.getMatricula()) == 0) {
@@ -53,7 +41,7 @@ public class UsuarioModel {
         return vacio;
     }
 
-    // Actualizamos los datos de un objeto
+    // Método para actualizar datos de un  objeto en la lista
     public List<Usuario> actualizarUsuario(List<Usuario> lista,
             Usuario usuario) {
         for (int i = 0; i < lista.size(); i++) {
@@ -64,5 +52,19 @@ public class UsuarioModel {
             }
         }
         return lista;
+    }
+
+    // Método para mostrar el contenido de la lista en una tabla
+    public void mostrarUsuario(List<Usuario> lista, DefaultTableModel modelo) {
+        modelo.setRowCount(0);//resetea la tabla
+        for (int i = 0; i < lista.size(); i++) {
+            //Objeto fila para obtener los datos se mostrará
+            Object[] fila = new Object[4];
+            fila[0] = lista.get(i).getMatricula();
+            fila[1] = lista.get(i).getNombre();
+            fila[2] = lista.get(i).getCarrera();
+            fila[3] = lista.get(i).getSemestre();
+            modelo.addRow(fila);//Añadimos la fila a la tabla
+        }
     }
 }

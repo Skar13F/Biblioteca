@@ -11,12 +11,12 @@ public class Encargado {
     private String nombre;
     private String telefono;
 
-    public Encargado() {
+    public Encargado() {// constructor vacío
 
     }
-
+    
+    //constructor para inicializar atributos de la clase
     public Encargado(String codTrab, String nombre, String telefono) {
-        super();
         this.codTrab = codTrab;
         this.nombre = nombre;
         this.telefono = telefono;

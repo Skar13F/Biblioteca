@@ -13,11 +13,11 @@ public class Libro {
     private short cantidad;
     private String clasificacion;
 
-    public Libro() {
+    public Libro() {//constructor vacío
     }
 
     public Libro(String isbn, String autor, String titulo, short cantidad,
-            String clasificacion) {
+            String clasificacion) {//constructor para inicializar atributos
         this.isbn = isbn;
         this.autor = autor;
         this.titulo = titulo;

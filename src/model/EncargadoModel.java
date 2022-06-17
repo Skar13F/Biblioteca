@@ -1,6 +1,6 @@
 /* Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 25 de abril de 2022
- * Fecha de actualización: 09 de junio de 2022
+ * Fecha de actualización: 17 de junio de 2022
  * Descripción: clase para modelar las operaciones CRUD de la clase encargado
  */
 package model;
@@ -12,14 +12,16 @@ import pojo.Encargado;
 
 public class EncargadoModel {
 
+    // Método para agregar objetos a la lista de encargados
     public List<Encargado> crearEncargado(List<Encargado> lista2,
-            Encargado encargado) {// agregamos objetos a la lista
+            Encargado encargado) {
         lista2.add(encargado);
         return lista2;
     }
 
+    // Método para eliminar un objeto encargado de la lista
     public List<Encargado> eliminarEncargado(List<Encargado> lista,
-            String codTrab) {// eliminamos un objeto de la lista
+            String codTrab) {
         for (Encargado encargado : lista) {
             if (codTrab.compareTo(encargado.getCodTrab()) == 0) {
                 lista.remove(encargado);
@@ -29,20 +31,8 @@ public class EncargadoModel {
         return lista;
     }
 
-    public void mostrarEncargado(List<Encargado> lista,
-            DefaultTableModel modelo) {// Imprimimos el contenido de la lista
-        modelo.setRowCount(0);
-        for (int i = 0; i < lista.size(); i++) {
-            Object[] fila = new Object[3];
-            fila[0] = lista.get(i).getCodTrab();
-            fila[1] = lista.get(i).getNombre();
-            fila[2] = lista.get(i).getTelefono();
-            modelo.addRow(fila);
-        }
-    }
-
+    //Método para buscar un objeto en la lista, retorna nulo si no lo encuentra
     public Encargado getEncargado(List<Encargado> lista, String CodTrab) {
-        // Buscamos un objeto a tavés de su código
         Encargado vacio = null;
         for (Encargado encargado : lista) {
             if (CodTrab.compareTo(encargado.getCodTrab()) == 0) {
@@ -52,7 +42,7 @@ public class EncargadoModel {
         return vacio;
     }
 
-    // Actualizamos datos de un objeto de la lista
+    // Método para actualizar datos de un  objeto en la lista
     public List<Encargado> actualizarEncargado(List<Encargado> lista,
             Encargado encargado) {
         for (int i = 0; i < lista.size(); i++) {
@@ -65,4 +55,17 @@ public class EncargadoModel {
         return lista;
     }
 
+    // Método para mostrar el contenido de la lista en una tabla
+    public void mostrarEncargado(List<Encargado> lista,
+            DefaultTableModel modelo) {
+        modelo.setRowCount(0);//resetea la tabla
+        for (int i = 0; i < lista.size(); i++) {
+            //Objeto fila para obtener los datos se mostrará
+            Object[] fila = new Object[3];
+            fila[0] = lista.get(i).getCodTrab();
+            fila[1] = lista.get(i).getNombre();
+            fila[2] = lista.get(i).getTelefono();
+            modelo.addRow(fila);//Añadimos la fila a la tabla
+        }
+    }
 }

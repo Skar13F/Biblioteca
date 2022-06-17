@@ -17,13 +17,12 @@ public class Prestamo {
     private String matricula;
     private String codTrab;
 
-    public Prestamo() {
+    public Prestamo() {//constructor vacío
     }
 
     public Prestamo(int id, String fechaSol, String fechaEnt,
             List<String> nombres, String matricula, String codTrab,
-            String isbn) {
-        super();
+            String isbn) {//constructor para inicializar atributos de la clase
         this.id = id;
         this.fechaSol = fechaSol;
         this.fechaEnt = fechaEnt;

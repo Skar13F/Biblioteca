@@ -16,27 +16,31 @@ public class UsuarioController {
 
     private static UsuarioModel userModel = new UsuarioModel();
 
+    // Método para añadir datos a la lista
     public List<Usuario> crearUsuario(List<Usuario> lista, Usuario usuario) {
-        // Agreagar
         return userModel.crearUsuario(lista, usuario);
     }
 
+    // Método para eliminar datos de la lista
     public List<Usuario> eliminarUsuario(List<Usuario> lista,
-            String matricula) {// Eliminar
+            String matricula) {
         return userModel.eliminarUsuario(lista, matricula);
     }
 
-    public void mostrarUsuario(List<Usuario> lista,
-            DefaultTableModel modelo) {// Mostrar
-        userModel.mostrarUsuario(lista, modelo);
-    }
-
-    public Usuario getUsuario(List<Usuario> lista, String matricula) {// Buscar
+    //Método para buscar un objeto en la lista
+    public Usuario getUsuario(List<Usuario> lista, String matricula) {
         return userModel.getUsuario(lista, matricula);
     }
 
+    //Método para actualizar datos de un objeto
     public List<Usuario> actualizarUsuario(List<Usuario> lista,
-            Usuario usuario) {// Actualizar
+            Usuario usuario) {
         return userModel.actualizarUsuario(lista, usuario);
+    }
+    
+    //Método para mostrar (imprimir) los datos de la lista en una tabla
+    public void mostrarUsuario(List<Usuario> lista,
+            DefaultTableModel modelo) {
+        userModel.mostrarUsuario(lista, modelo);
     }
 }

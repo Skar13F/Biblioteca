@@ -16,31 +16,33 @@ public class PrestamoController {
 
     private static PrestamoModel prestam = new PrestamoModel();
 
+    // Método para añadir datos a la lista
     public List<Prestamo> crearPrestamo(List<Prestamo> lista, Prestamo prest) {
-        // Agregar
         return prestam.crearPrestamo(lista, prest);
     }
 
-    public Prestamo getPrestamo(List<Prestamo> lista, Prestamo prestamo) {
-        // Buscar
-        return prestam.getPrestamo(lista, prestamo);
-    }
-
+    // Método para eliminar datos de la lista
     public List<Prestamo> eliminarPrestamo(List<Prestamo> lista,
-            Prestamo prestamo) {// Eliminar
+            Prestamo prestamo) {
         return prestam.eliminarPrestamo(lista, prestamo);
     }
 
-    public void mostrarPrestamo(List<Prestamo> lista, List<Libro> listaLibro,
-            List<Encargado> listaEncargado,
-            List<Usuario> listaUsuario, DefaultTableModel modelo) {// Mostrar
-        prestam.mostrarPrestamo(lista, listaLibro, listaEncargado, listaUsuario,
-                modelo);
+    //Método para buscar un objeto en la lista
+    public Prestamo getPrestamo(List<Prestamo> lista, Prestamo prestamo) {
+        return prestam.getPrestamo(lista, prestamo);
     }
 
+    //Método para actualizar datos de un objeto
     public List<Prestamo> actualizarPrestamo(List<Prestamo> lista, int id,
             Prestamo prestamo) {
         return prestam.actualizarPrestamo(lista, id, prestamo);
+    }
 
+    //Método para mostrar (imprimir) los datos de la lista en una tabla
+    public void mostrarPrestamo(List<Prestamo> lista, List<Libro> listaLibro,
+            List<Encargado> listaEncargado, List<Usuario> listaUsuario,
+            DefaultTableModel modelo) {
+        prestam.mostrarPrestamo(lista, listaLibro, listaEncargado, listaUsuario,
+                modelo);
     }
 }

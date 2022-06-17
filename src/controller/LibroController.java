@@ -17,26 +17,30 @@ public class LibroController {
 
     private static LibroModel lib = new LibroModel();
 
-    public List<Libro> crearLibro(List<Libro> lista, Libro libro) {// Agregar
+    // Método para añadir datos a la lista
+    public List<Libro> crearLibro(List<Libro> lista, Libro libro) {
         return lib.crearLibro(lista, libro);
     }
 
-    public Libro getLibro(List<Libro> lista, String isbn) {// Buscar
-        return lib.getLibro(lista, isbn);
-    }
-
+    // Método para eliminar datos de la lista
     public List<Libro> eliminarLibro(List<Libro> lista, String isbn) {
-        // Eliminar
         return lib.eliminarLibro(lista, isbn);
     }
 
+    //Método para buscar un objeto en la lista
+    public Libro getLibro(List<Libro> lista, String isbn) {
+        return lib.getLibro(lista, isbn);
+    }
+
+    //Método para actualizar datos de un objeto
+    public List<Libro> actualizarLibro(List<Libro> lista, Libro libro) {
+        return lib.actualizarLibro(lista, libro);
+    }
+    
+    //Método para mostrar (imprimir) los datos de la lista en una tabla
     public void mostrarlibro(List<Libro> lista, DefaultTableModel modelo) {
-        // Mostrar
         lib.mostrarlibro(lista, modelo);
     }
 
-    public List<Libro> actualizarLibro(List<Libro> lista, Libro libro) {
-        // Actualizar
-        return lib.actualizarLibro(lista, libro);
-    }
+    
 }
