@@ -8,7 +8,6 @@ package view;
 
 import controller.EncargadoController;
 
-
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -41,6 +40,24 @@ public class PanelEncargado extends javax.swing.JPanel {
         jText_Codigo.setText("");
         jText_Nombre.setText("");
         jText_Telefono.setText("");
+    }
+
+    public boolean isNumeric(String datos) {
+        for (int i = 0; i < datos.length(); i++) {
+            if (Character.compare(datos.charAt(i), '0') != 0
+                    && Character.compare(datos.charAt(i), '1') != 0
+                    && Character.compare(datos.charAt(i), '2') != 0
+                    && Character.compare(datos.charAt(i), '3') != 0
+                    && Character.compare(datos.charAt(i), '4') != 0
+                    && Character.compare(datos.charAt(i), '5') != 0
+                    && Character.compare(datos.charAt(i), '6') != 0
+                    && Character.compare(datos.charAt(i), '7') != 0
+                    && Character.compare(datos.charAt(i), '8') != 0
+                    && Character.compare(datos.charAt(i), '9') != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -104,13 +121,15 @@ public class PanelEncargado extends javax.swing.JPanel {
 
         jButton5.setBackground(new java.awt.Color(98, 193, 222));
         jButton5.setText("Borrar");
-        jButton5.setPreferredSize(new java.awt.Dimension(78, 24));
+        jButton5.setMaximumSize(new java.awt.Dimension(83, 24));
+        jButton5.setMinimumSize(new java.awt.Dimension(83, 24));
+        jButton5.setPreferredSize(new java.awt.Dimension(83, 24));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 95, -1));
 
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
@@ -181,31 +200,30 @@ public class PanelEncargado extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel1))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jButton4)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addContainerGap()
+                                .addComponent(jButton4))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jText_Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jText_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jText_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3)
+                                .addGap(14, 14, 14)
+                                .addComponent(jText_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(89, 89, 89)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addGap(14, 14, 14)
-                        .addComponent(jText_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -242,23 +260,34 @@ public class PanelEncargado extends javax.swing.JPanel {
                 || jText_Nombre.getText().equals("")
                 || jText_Telefono.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
+        } else if (jText_Codigo.getText().length() != 7) {
+            JOptionPane.showMessageDialog(null, "El código debe constar de 7 cifras");
+        } else if (jText_Telefono.getText().length() != 10) {
+            JOptionPane.showMessageDialog(null, "El número de teléfono\ndebe constar de 10 cifras");
         } else {
-            Encargado encargado1 = encController.getEncargado(listaEncargado,
-                    jText_Codigo.getText());
-            if (encargado1 == null) {
-                encargado.setCodTrab(jText_Codigo.getText());
-                encargado.setNombre(jText_Nombre.getText());
-                encargado.setTelefono(jText_Telefono.getText());
-
-                limpiar();
-                jText_Codigo.setEditable(true);
-
-                listaEncargado = encController.crearEncargado(listaEncargado,
-                        encargado);
+            if (isNumeric(jText_Codigo.getText()) == false) {
+                JOptionPane.showMessageDialog(null, "Ingresa solo códigos numéricos");
+            } else if (isNumeric(jText_Telefono.getText()) == false) {
+                JOptionPane.showMessageDialog(null, "En el campo teléfono\nsolo ingresa números");
             } else {
-                JOptionPane.showMessageDialog(null, "La código ya está "
-                        + "registrado");
-                jText_Codigo.setEditable(true);
+                Encargado encargado1 = encController.getEncargado(listaEncargado,
+                        jText_Codigo.getText());
+                if (encargado1 == null) {
+                    encargado.setCodTrab(jText_Codigo.getText());
+                    encargado.setNombre(jText_Nombre.getText());
+                    encargado.setTelefono(jText_Telefono.getText());
+
+                    limpiar();
+                    jText_Codigo.setEditable(true);
+
+                    listaEncargado = encController.crearEncargado(listaEncargado,
+                            encargado);
+                } else {
+                    JOptionPane.showMessageDialog(null, "La código ya está "
+                            + "registrado");
+                    jText_Codigo.setEditable(true);
+                }
+
             }
 
         }
@@ -292,22 +321,31 @@ public class PanelEncargado extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Encargado encargado1 = new Encargado();
+
         if (jText_Codigo.getText().equals("")
                 || jText_Nombre.getText().equals("")
                 || jText_Telefono.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
+        } else if (jText_Codigo.getText().length() != 7) {
+            JOptionPane.showMessageDialog(null, "El código debe constar de 7 cifras");
+        } else if (jText_Telefono.getText().length() != 10) {
+            JOptionPane.showMessageDialog(null, "El número de teléfono\ndebe constar de 10 cifras");
         } else {
+            if (isNumeric(jText_Codigo.getText()) == false) {
+                JOptionPane.showMessageDialog(null, "Ingresa solo códigos numéricos");
+            } else if (isNumeric(jText_Telefono.getText()) == false) {
+                JOptionPane.showMessageDialog(null, "En el campo teléfono\nsolo ingresa números");
+            } else {
+                encargado1.setCodTrab(jText_Codigo.getText());
+                encargado1.setNombre(jText_Nombre.getText());
+                encargado1.setTelefono(jText_Telefono.getText());
 
-            encargado1.setCodTrab(jText_Codigo.getText());
-            encargado1.setNombre(jText_Nombre.getText());
-            encargado1.setTelefono(jText_Telefono.getText());
+                listaEncargado = encController.actualizarEncargado(listaEncargado, encargado1);
+                encController.mostrarEncargado(listaEncargado, modelo);
 
-            listaEncargado = encController.actualizarEncargado(listaEncargado, encargado1);
-            encController.mostrarEncargado(listaEncargado, modelo);
-
-            limpiar();
+                limpiar();
+            }
         }
-
         jText_Codigo.setEditable(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -342,6 +380,7 @@ public class PanelEncargado extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jText_Codigo.setEditable(true);
         limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
 

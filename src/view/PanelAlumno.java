@@ -105,13 +105,15 @@ public class PanelAlumno extends javax.swing.JPanel {
 
         jButton5.setBackground(new java.awt.Color(98, 193, 222));
         jButton5.setText("Borrar");
-        jButton5.setPreferredSize(new java.awt.Dimension(78, 24));
+        jButton5.setMaximumSize(new java.awt.Dimension(83, 24));
+        jButton5.setMinimumSize(new java.awt.Dimension(83, 24));
+        jButton5.setPreferredSize(new java.awt.Dimension(83, 24));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 95, -1));
 
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
@@ -362,6 +364,7 @@ public class PanelAlumno extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jText_Matricula.setEditable(true);
         limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
 

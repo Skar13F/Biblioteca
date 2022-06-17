@@ -118,7 +118,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
 
         jLabel1.setBackground(new java.awt.Color(153, 153, 255));
         jLabel1.setFont(new java.awt.Font("Bitstream Charter", 1, 18)); // NOI18N
-        jLabel1.setText("Sistema de adiminstración de Biblioteca");
+        jLabel1.setText("Sistema de Administración de Biblioteca");
         jPanel2.add(jLabel1);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/biblioteca32x32.png"))); // NOI18N
