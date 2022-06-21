@@ -17,10 +17,6 @@ import pojo.Usuario;
 import pojo.Libro;
 import pojo.Encargado;
 
-/**
- *
- * @author oscar
- */
 public class VentanaPrincipal extends javax.swing.JFrame implements ActionListener {
 
     private List<Libro> listaLibro = new ArrayList<>();
@@ -32,9 +28,9 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
     PanelEncargado panelEnc;
     PanelPrestamo panelPrest;
 
-    /**
-     * Creates new form VentanaPrincipal
-     */
+    /*
+    constructor para inicializar los componentes de la clase
+    */
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -59,7 +55,9 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
         boton_Prest.addActionListener(this);
 
     }
-
+    /*
+    Deshabilita botones dependiendo de cual haya seleccionado el usuario
+    */
     private void deshabilitarBotones() {
         if (panelLib.isVisible()) {
             boton_Lib.setEnabled(false);
@@ -110,6 +108,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(675, 400));
+        setPreferredSize(new java.awt.Dimension(900, 500));
 
         contenedor.setPreferredSize(new java.awt.Dimension(800, 400));
         contenedor.setLayout(new java.awt.BorderLayout());
@@ -149,6 +148,11 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
 
         boton_Prest.setBackground(new java.awt.Color(112, 122, 255));
         boton_Prest.setText("Préstamos");
+        boton_Prest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_PrestActionPerformed(evt);
+            }
+        });
         jPanel4.add(boton_Prest, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 105, -1));
 
         boton_Alum.setBackground(new java.awt.Color(112, 122, 255));
@@ -188,6 +192,10 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void boton_PrestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_PrestActionPerformed
+        
+    }//GEN-LAST:event_boton_PrestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +250,10 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
     // End of variables declaration//GEN-END:variables
 
     @Override
+    /*
+    Método para ocultar o mostrar los páneles secundarios,
+    validando el botón seleccionado
+    */
     public void actionPerformed(ActionEvent ae) {
         Object evt = ae.getSource();
         if (evt.equals(boton_Lib)) {
@@ -272,13 +284,16 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
             panelLib.setVisible(false);
             panelAlum.setVisible(false);
             panelEnc.setVisible(false);
+            panelPrest = new PanelPrestamo(listaLibro, listaAlumno, listaEncargado);
             panelPrest.setVisible(true);
             contenedor.add(panelPrest);
             contenedor.validate();
             deshabilitarBotones();
         }
     }
-
+    
+    
+    //Método que inicializa algunos datos dentro del programa para probarlo
     public void insertar() {
         Libro libro1 = new Libro();
         Libro libro2 = new Libro();

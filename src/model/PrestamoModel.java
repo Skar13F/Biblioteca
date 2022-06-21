@@ -5,13 +5,14 @@
  */
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 import pojo.*;
 
 public class PrestamoModel {
-
+    private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     // Método para agregar objetos a la lista Préstamo
     public List<Prestamo> crearPrestamo(List<Prestamo> lista, Prestamo prest) {
         prest.setId(lista.size() + 1);//agregamos un id dinámico al objeto
@@ -73,8 +74,8 @@ public class PrestamoModel {
             //Objeto fila para obtener los datos se mostrará
             Object[] fila = new Object[6];
             fila[0] = lista.get(i).getId();
-            fila[1] = lista.get(i).getFechaSol();
-            fila[2] = lista.get(i).getFechaEnt();
+            fila[1] = formatter.format(lista.get(i).getFechaSol());
+            fila[2] = formatter.format(lista.get(i).getFechaEnt());
             fila[3] = lista.get(i).getMatricula();
             fila[4] = lista.get(i).getCodTrab();
             fila[5] = lista.get(i).getNombres();

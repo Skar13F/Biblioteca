@@ -6,13 +6,14 @@
 package pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Prestamo {
 
     private int id;
-    private String fechaSol;
-    private String fechaEnt;
+    private Date fechaSol;
+    private Date fechaEnt;
     private List<String> nombres = new ArrayList<>();
     private String matricula;
     private String codTrab;
@@ -20,7 +21,7 @@ public class Prestamo {
     public Prestamo() {//constructor vacío
     }
 
-    public Prestamo(int id, String fechaSol, String fechaEnt,
+    public Prestamo(int id, Date fechaSol, Date fechaEnt,
             List<String> nombres, String matricula, String codTrab,
             String isbn) {//constructor para inicializar atributos de la clase
         this.id = id;
@@ -39,21 +40,23 @@ public class Prestamo {
         this.id = id;
     }
 
-    public String getFechaSol() {
+    public Date getFechaSol() {
         return fechaSol;
     }
 
-    public void setFechaSol(String fechaSol) {
+    public void setFechaSol(Date fechaSol) {
         this.fechaSol = fechaSol;
     }
 
-    public String getFechaEnt() {
+    public Date getFechaEnt() {
         return fechaEnt;
     }
 
-    public void setFechaEnt(String fechaEnt) {
+    public void setFechaEnt(Date fechaEnt) {
         this.fechaEnt = fechaEnt;
     }
+
+    
 
     public List<String> getNombres() {
         return nombres;

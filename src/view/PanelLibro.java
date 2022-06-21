@@ -1,6 +1,6 @@
 /* Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 01 de junio de 2022
- * Fecha de actualización: 09 de junio de 2022
+ * Fecha de actualización: 20 de junio de 2022
  * Descripción: clase JPanel para controlar las operaciones CRUD
                 aplicados a los objetos Libro
  */
@@ -23,19 +23,21 @@ public class PanelLibro extends javax.swing.JPanel {
     private DefaultTableModel modelo;
 
     /**
-     * Creates new form Panel1
+     * Constructor que recibe la lista libro cargadas de información inicializa
+     * algunos atributos
      */
     public PanelLibro(List<Libro> listLib) {
         initComponents();
-
         libController = new LibroController();
-        //listaLibro = new ArrayList<>();
         listaLibro = listLib;
         modelo = (DefaultTableModel) jTable1.getModel();
         libController.mostrarlibro(listLib, modelo);
 
     }
 
+    /*
+    Método para borrar el contenido de los cuadros de texto
+     */
     public void limpiar() {
         jText_ISBN.setText("");
         jText_Titulo.setText("");
@@ -44,6 +46,9 @@ public class PanelLibro extends javax.swing.JPanel {
         jText_Cantidad.setText("");
     }
 
+    /*
+    Método para leer los datos que ingresa el usuario
+     */
     public Libro leer(Libro libroLeer) {
         libroLeer.setIsbn(jText_ISBN.getText());
         libroLeer.setTitulo(jText_Titulo.getText());
@@ -51,27 +56,6 @@ public class PanelLibro extends javax.swing.JPanel {
         libroLeer.setAutor(jText_Autor.getText());
         libroLeer.setCantidad(Short.parseShort(jText_Cantidad.getText()));
         return libroLeer;
-    }
-
-    public boolean isNumeric(String datos) {
-        for (int i = 0; i < datos.length(); i++) {
-            if (Character.compare(datos.charAt(0), '0') == 0) {
-                return false;
-            }
-            if (Character.compare(datos.charAt(i), '0') != 0
-                    && Character.compare(datos.charAt(i), '1') != 0
-                    && Character.compare(datos.charAt(i), '2') != 0
-                    && Character.compare(datos.charAt(i), '3') != 0
-                    && Character.compare(datos.charAt(i), '4') != 0
-                    && Character.compare(datos.charAt(i), '5') != 0
-                    && Character.compare(datos.charAt(i), '6') != 0
-                    && Character.compare(datos.charAt(i), '7') != 0
-                    && Character.compare(datos.charAt(i), '8') != 0
-                    && Character.compare(datos.charAt(i), '9') != 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
     /**
@@ -184,6 +168,11 @@ public class PanelLibro extends javax.swing.JPanel {
         jText_Cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jText_CantidadActionPerformed(evt);
+            }
+        });
+        jText_Cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_CantidadKeyTyped(evt);
             }
         });
 
@@ -299,6 +288,9 @@ public class PanelLibro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_GeneroActionPerformed
 
+    /*
+    Botón para agregar un nuevo elemento (objeto) a la lista
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Libro libro = new Libro();
@@ -307,7 +299,7 @@ public class PanelLibro extends javax.swing.JPanel {
                 || jText_Autor.getText().equals("")
                 || jText_Cantidad.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
-        } else if (isNumeric(jText_Cantidad.getText())) {
+        } else if(Integer.parseInt(jText_Cantidad.getText())>=1){
             Libro libro1 = libController.getLibro(listaLibro,
                     jText_ISBN.getText());
             if (libro1 == null) {
@@ -322,16 +314,18 @@ public class PanelLibro extends javax.swing.JPanel {
                         + "registrado");
                 jText_ISBN.setEditable(true);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "En el campo cantidad\nsolo "
-                    + "ingresa números positivos");
-
+        }else{
+            JOptionPane.showMessageDialog(null, "Solo se admiten números\n"
+                    + "mayores a 0");
         }
 
         libController.mostrarlibro(listaLibro, modelo);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /*
+    Botón para eliminar un objeto de la lista
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (jText_ISBN.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Ingresa un isbn\no rellena "
@@ -355,6 +349,9 @@ public class PanelLibro extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /*
+    Botón para actualizar datos de un objeto dentro de la lista
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Libro libro1 = new Libro();
         if (jText_ISBN.getText().equals("")
@@ -374,7 +371,10 @@ public class PanelLibro extends javax.swing.JPanel {
 
         jText_ISBN.setEditable(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /*
+    Muestra en los cuadros de texto los datos de un objeto seleccionado
+    desde la tabla
+     */
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jText_ISBN.setEditable(false);
         jText_ISBN.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
@@ -388,7 +388,7 @@ public class PanelLibro extends javax.swing.JPanel {
         jText_Cantidad.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
                 4).toString());
     }//GEN-LAST:event_jTable1MouseClicked
-
+    //Busca un objeto dentro de la lista
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         limpiar();
         Libro lbuscar = new Libro();
@@ -412,6 +412,7 @@ public class PanelLibro extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    //Vacía el contenido de los cuadros de texto
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jText_ISBN.setEditable(true);
         limpiar();
@@ -420,6 +421,14 @@ public class PanelLibro extends javax.swing.JPanel {
     private void jText_CantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_CantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_CantidadActionPerformed
+
+    private void jText_CantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CantidadKeyTyped
+        char letra=evt.getKeyChar();
+        if(Character.isLetter(letra)){
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Solo se admiten números");
+        }
+    }//GEN-LAST:event_jText_CantidadKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

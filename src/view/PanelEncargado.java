@@ -252,7 +252,9 @@ public class PanelEncargado extends javax.swing.JPanel {
     private void jText_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_TelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_TelefonoActionPerformed
-
+    /*
+    Botón para agregar un nuevo elemento (objeto) a la lista
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Encargado encargado = new Encargado();
@@ -291,11 +293,12 @@ public class PanelEncargado extends javax.swing.JPanel {
             }
 
         }
-
         encController.mostrarEncargado(listaEncargado, modelo);
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /*
+    Botón para eliminar un objeto de la lista
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (jText_Codigo.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Ingresa una matrícula\no "
@@ -319,6 +322,9 @@ public class PanelEncargado extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /*
+    Botón para actualizar datos de un objeto dentro de la lista
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Encargado encargado1 = new Encargado();
 
@@ -348,7 +354,8 @@ public class PanelEncargado extends javax.swing.JPanel {
         }
         jText_Codigo.setEditable(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jText_Codigo.setEditable(false);
         jText_Codigo.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
@@ -358,7 +365,8 @@ public class PanelEncargado extends javax.swing.JPanel {
         jText_Telefono.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
                 2).toString());
     }//GEN-LAST:event_jTable1MouseClicked
-
+    
+    //Busca un objeto en la lista
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Encargado eBuscar = new Encargado();
         if (jTextField1.getText().equals("")) {
@@ -378,7 +386,7 @@ public class PanelEncargado extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    //Vacía el contenido de los cuadros de texto
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jText_Codigo.setEditable(true);
         limpiar();

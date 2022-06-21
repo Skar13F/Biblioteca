@@ -12,7 +12,10 @@ import controller.EncargadoController;
 import controller.PrestamoController;
 import controller.LibroController;
 import controller.UsuarioController;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -40,10 +43,13 @@ public class PanelPrestamo extends javax.swing.JPanel {
     private UsuarioController alumnoAux;
     private EncargadoController encargadoAux;
 
+    private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
     private int id;
 
     /**
-     * Creates new form Panel1
+     * Constructor que recibe las listas cargadas de información inicializa
+     * algunos atributos
      */
     public PanelPrestamo(List<Libro> listLibro, List<Usuario> listAlumno,
             List<Encargado> listEncargado) {
@@ -61,31 +67,61 @@ public class PanelPrestamo extends javax.swing.JPanel {
         listaPrestamo = new ArrayList<>();
         modelo = (DefaultTableModel) jTable1.getModel();
         listaIsbn = new ArrayList<>();
-
+        jText_FechaSol.setText(formatter.format(new Date()));
+        jText_FechaSol.setEditable(false);
+        
+        rellenarComboAlumno();
+        rellenarComboEncargado();
+        rellenarComboLibro();
     }
 
+    //Vacía la información de los jtext 
     public void limpiar() {
-        jText_FechaSol.setText("00/00/0000");
         jText_FechaEnt.setText("00/00/0000");
-        jText_Matricula.setText("");
-        jText_Encargado.setText("");
-        jText_ArrayIsbn.setText("isbn");
     }
 
+    //Lee datos de las entradas de texto y las guarda en un objeto préstamo
     public Prestamo leer() {
         Prestamo prestamoLeer = new Prestamo();
         prestamoLeer.setId(id);
-        prestamoLeer.setFechaSol(jText_FechaSol.getText());
-        prestamoLeer.setFechaEnt(jText_FechaEnt.getText());
-        prestamoLeer.setMatricula(jText_Matricula.getText());
-        prestamoLeer.setCodTrab(jText_Encargado.getText());
-        if (jText_ArrayIsbn.getText().equals("")) {
-        } else {
-            String nuevo = jText_ArrayIsbn.getText();
-            listaIsbn.add(nuevo);
-        }
+        prestamoLeer.setFechaSol((ParseFecha(jText_FechaSol.getText())));
+        prestamoLeer.setFechaEnt(ParseFecha(jText_FechaEnt.getText()));
+        prestamoLeer.setMatricula(jComboBox1.getSelectedItem().toString());
+        prestamoLeer.setCodTrab(jComboBox2.getSelectedItem().toString());
+
+        listaIsbn.add(jComboBox3.getSelectedItem().toString());
+
         prestamoLeer.setNombres(listaIsbn);
         return prestamoLeer;
+    }
+
+    public static Date ParseFecha(String fecha) {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(fecha);
+        } catch (ParseException ex) {
+            
+        }
+        return fechaDate;
+    }
+
+    public void rellenarComboAlumno() {
+        for (int i = 0; i < listaAlumno.size(); i++) {
+            jComboBox1.addItem(listaAlumno.get(i).getMatricula());
+        }
+    }
+
+    public void rellenarComboEncargado() {
+        for (int i = 0; i < listaEncargado.size(); i++) {
+            jComboBox2.addItem(listaEncargado.get(i).getCodTrab());
+        }
+    }
+
+    public void rellenarComboLibro() {
+        for (int i = 0; i < listaLibro.size(); i++) {
+            jComboBox3.addItem(listaLibro.get(i).getIsbn());
+        }
     }
 
     /**
@@ -108,14 +144,14 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jText_FechaEnt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jText_Matricula = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jText_Encargado = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jText_ArrayIsbn = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 51));
         setLayout(new java.awt.BorderLayout());
@@ -169,8 +205,12 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jLabel1.setText("Solicitud");
 
         jText_FechaSol.setBackground(new java.awt.Color(39, 154, 180));
-        jText_FechaSol.setText("00/00/0000");
         jText_FechaSol.setMaximumSize(new java.awt.Dimension(150, 20));
+        jText_FechaSol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jText_FechaSolActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Entrega");
 
@@ -180,23 +220,9 @@ public class PanelPrestamo extends javax.swing.JPanel {
 
         jLabel3.setText("Matrícula");
 
-        jText_Matricula.setBackground(new java.awt.Color(39, 154, 180));
-        jText_Matricula.setMaximumSize(new java.awt.Dimension(90, 20));
-        jText_Matricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_MatriculaActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Encargado");
 
-        jText_Encargado.setBackground(new java.awt.Color(39, 154, 180));
-        jText_Encargado.setMaximumSize(new java.awt.Dimension(150, 20));
-
         jLabel5.setText("Libros");
-
-        jText_ArrayIsbn.setBackground(new java.awt.Color(39, 154, 180));
-        jText_ArrayIsbn.setText("isbn");
 
         jTable1.setBackground(new java.awt.Color(66, 248, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -227,10 +253,27 @@ public class PanelPrestamo extends javax.swing.JPanel {
         }
 
         jButton6.setBackground(new java.awt.Color(0, 255, 222));
-        jButton6.setText("Añadir");
+        jButton6.setText("+");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
             }
         });
 
@@ -250,24 +293,28 @@ public class PanelPrestamo extends javax.swing.JPanel {
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jText_FechaSol, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                            .addComponent(jText_Encargado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jText_FechaSol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jText_FechaEnt, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                            .addComponent(jText_ArrayIsbn))
+                            .addComponent(jText_FechaEnt, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton6)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addGap(16, 16, 16)
-                                .addComponent(jText_Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton6))
-                        .addGap(4, 4, 4)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(12, 12, 12)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -280,14 +327,14 @@ public class PanelPrestamo extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(jText_FechaEnt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(jText_Matricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jText_Encargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jText_ArrayIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
+                    .addComponent(jButton6)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
@@ -296,25 +343,18 @@ public class PanelPrestamo extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jText_MatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_MatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_MatriculaActionPerformed
-
+    /*
+    Botón para agregar un nuevo elemento (objeto) a la lista
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Prestamo prestamo = new Prestamo();
 
-        Usuario alumno = alumnoAux.getUsuario(listaAlumno,
-                jText_Matricula.getText());
-        Libro libro = libroAux.getLibro(listaLibro, jText_ArrayIsbn.getText());
-        Encargado encargado = encargadoAux.getEncargado(listaEncargado,
-                jText_Encargado.getText());
+        Usuario alumno = alumnoAux.getUsuario(listaAlumno, jComboBox1.getSelectedItem().toString());
+        Libro libro = libroAux.getLibro(listaLibro, jComboBox3.getSelectedItem().toString());
+        Encargado encargado = encargadoAux.getEncargado(listaEncargado, jComboBox2.getSelectedItem().toString());
 
-        if (jText_FechaSol.getText().equals("")
-                || jText_FechaEnt.getText().equals("")
-                || jText_Matricula.getText().equals("")
-                || jText_Encargado.getText().equals("")
-                || jText_ArrayIsbn.getText().equals("")) {
+        if (jText_FechaEnt.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else if (alumno == null) {
             JOptionPane.showMessageDialog(null, "El alumno no existe\n"
@@ -329,7 +369,6 @@ public class PanelPrestamo extends javax.swing.JPanel {
             listaPrestamo = prestController.crearPrestamo(listaPrestamo,
                     prestamo);
             limpiar();
-            jText_FechaSol.setEditable(true);
             List<String> vacio = new ArrayList<>();
             listaIsbn = vacio;
         }
@@ -339,18 +378,16 @@ public class PanelPrestamo extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /*
+    Botón para eliminar un objeto de la lista
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if (jText_FechaSol.getText().equals("")
-                || jText_FechaEnt.getText().equals("")
-                || jText_Matricula.getText().equals("")
-                || jText_Encargado.getText().equals("")) {
+        if (jText_FechaSol.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
             Prestamo leerD = leer();
             Prestamo prestamo23 = prestController.getPrestamo(listaPrestamo,
                     leerD);
-            //JOptionPane.showMessageDialog(null, leerD.getCodTrab());
-            //JOptionPane.showMessageDialog(null, prestamo23.getCodTrab());
             if (prestamo23 != null) {
                 listaPrestamo = prestController.eliminarPrestamo(listaPrestamo,
                         leerD);
@@ -366,13 +403,12 @@ public class PanelPrestamo extends javax.swing.JPanel {
                 listaEncargado, listaAlumno, modelo);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /*
+    Botón para actualizar datos de un objeto dentro de la lista
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Prestamo prestamo1 = new Prestamo();
-        if (jText_FechaSol.getText().equals("")
-                || jText_FechaEnt.getText().equals("")
-                || jText_Matricula.getText().equals("")
-                || jText_Encargado.getText().equals("")
-                || jText_ArrayIsbn.getText().equals("")) {
+        if (jText_FechaSol.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
             prestamo1 = leer();
@@ -391,6 +427,10 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jText_FechaSol.setEditable(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /*
+    Muestra en los cuadros de texto los datos de un objeto seleccionado
+    desde la tabla
+     */
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         id = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),
                 0).toString());
@@ -398,29 +438,41 @@ public class PanelPrestamo extends javax.swing.JPanel {
                 1).toString());
         jText_FechaEnt.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
                 2).toString());
-        jText_Matricula.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
-                3).toString());
-        jText_Encargado.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
-                4).toString());
-        jText_ArrayIsbn.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
-                5).toString());
+        jComboBox1.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 3));
+        jComboBox2.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 4));
+        jComboBox3.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 5));
     }//GEN-LAST:event_jTable1MouseClicked
 
+    //Vacía el contenido de los cuadros de texto
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jText_FechaSol.setEditable(true);
         limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        String isbn1 = jText_ArrayIsbn.getText();
+    private void jText_FechaSolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_FechaSolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jText_FechaSolActionPerformed
 
-        Libro libroBuscar = libroAux.getLibro(listaLibro, isbn1);
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    //Busca un objeto dentro de la lista
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Libro libroBuscar = libroAux.getLibro(listaLibro, jComboBox3.getSelectedItem().toString());
         if (libroBuscar != null) {
-            listaIsbn.add(isbn1);
+            listaIsbn.add(jComboBox3.getSelectedItem().toString());
         } else {
             JOptionPane.showMessageDialog(null, "no hay registro del libro");
         }
-
     }//GEN-LAST:event_jButton6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -429,6 +481,9 @@ public class PanelPrestamo extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -438,10 +493,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jText_ArrayIsbn;
-    private javax.swing.JTextField jText_Encargado;
     private javax.swing.JTextField jText_FechaEnt;
     private javax.swing.JTextField jText_FechaSol;
-    private javax.swing.JTextField jText_Matricula;
     // End of variables declaration//GEN-END:variables
 }
