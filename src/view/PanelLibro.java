@@ -292,35 +292,31 @@ public class PanelLibro extends javax.swing.JPanel {
     Botón para agregar un nuevo elemento (objeto) a la lista
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         Libro libro = new Libro();
         if (jText_ISBN.getText().equals("") || jText_Titulo.getText().equals("")
                 || jText_Genero.getText().equals("")
                 || jText_Autor.getText().equals("")
                 || jText_Cantidad.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
-        } else if(Integer.parseInt(jText_Cantidad.getText())>=1){
+        } else if (Integer.parseInt(jText_Cantidad.getText()) >= 1) {
             Libro libro1 = libController.getLibro(listaLibro,
                     jText_ISBN.getText());
             if (libro1 == null) {
                 libro = leer(libro);
-
                 limpiar();
                 jText_ISBN.setEditable(true);
-
                 listaLibro = libController.crearLibro(listaLibro, libro);
             } else {
                 JOptionPane.showMessageDialog(null, "El ISBN ya está "
                         + "registrado");
                 jText_ISBN.setEditable(true);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Solo se admiten números\n"
                     + "mayores a 0");
         }
 
         libController.mostrarlibro(listaLibro, modelo);
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /*
@@ -339,14 +335,11 @@ public class PanelLibro extends javax.swing.JPanel {
             } else {
                 listaLibro = libController.eliminarLibro(listaLibro,
                         libro.getIsbn());
-
                 limpiar();
                 jText_ISBN.setEditable(true);
-
             }
         }
         libController.mostrarlibro(listaLibro, modelo);
-
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /*
@@ -364,11 +357,8 @@ public class PanelLibro extends javax.swing.JPanel {
             libro1 = leer(libro1);
             listaLibro = libController.actualizarLibro(listaLibro, libro1);
             libController.mostrarlibro(listaLibro, modelo);
-
             limpiar();
-
         }
-
         jText_ISBN.setEditable(true);
     }//GEN-LAST:event_jButton2ActionPerformed
     /*
@@ -407,9 +397,7 @@ public class PanelLibro extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "El libro no existe");
             }
-
         }
-
     }//GEN-LAST:event_jButton4ActionPerformed
 
     //Vacía el contenido de los cuadros de texto
@@ -422,9 +410,10 @@ public class PanelLibro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_CantidadActionPerformed
 
+    //valida que la entrada del teclado sea solo números
     private void jText_CantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CantidadKeyTyped
-        char letra=evt.getKeyChar();
-        if(Character.isLetter(letra)){
+        char letra = evt.getKeyChar();
+        if (Character.isLetter(letra)) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Solo se admiten números");
         }

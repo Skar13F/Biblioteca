@@ -26,10 +26,7 @@ public class PrestamoModel {
             Prestamo prestamo) {
         for (Prestamo prestam : lista) {
             //validamos la existencia del objeto a eliminar
-            if (prestam.getFechaSol().equals(prestamo.getFechaSol())
-                    && prestam.getFechaEnt().equals(prestamo.getFechaEnt())
-                    && prestam.getCodTrab().equals(prestamo.getCodTrab())
-                    && prestam.getMatricula().equals(prestamo.getMatricula())) {
+            if (prestam.getId()==prestamo.getId()) {
                 lista.remove(prestam);
                 return lista;
             }
@@ -41,10 +38,7 @@ public class PrestamoModel {
     public Prestamo getPrestamo(List<Prestamo> lista, Prestamo prestamo) {
         Prestamo prestamo1 = null;
         for (Prestamo prestam : lista) {
-            if (prestam.getFechaSol().equals(prestamo.getFechaSol())
-                    && prestam.getFechaEnt().equals(prestamo.getFechaEnt())
-                    && prestam.getCodTrab().equals(prestamo.getCodTrab())
-                    && prestam.getMatricula().equals(prestamo.getMatricula())) {
+            if (prestam.getId()==prestamo.getId()) {
                 return prestam;
             }
         }

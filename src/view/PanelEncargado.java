@@ -33,15 +33,20 @@ public class PanelEncargado extends javax.swing.JPanel {
         listaEncargado = listEncargado;
         modelo = (DefaultTableModel) jTable1.getModel();
         encController.mostrarEncargado(listEncargado, modelo);
-
     }
 
+    /*
+    Método para limpiar(vaciar) los cuadros de texto
+     */
     public void limpiar() {
         jText_Codigo.setText("");
         jText_Nombre.setText("");
         jText_Telefono.setText("");
     }
 
+    /*
+    Método para validar que la entrada del teclado sea simplemente numérica
+     */
     public boolean isNumeric(String datos) {
         for (int i = 0; i < datos.length(); i++) {
             if (Character.compare(datos.charAt(i), '0') != 0
@@ -256,42 +261,41 @@ public class PanelEncargado extends javax.swing.JPanel {
     Botón para agregar un nuevo elemento (objeto) a la lista
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         Encargado encargado = new Encargado();
         if (jText_Codigo.getText().equals("")
                 || jText_Nombre.getText().equals("")
                 || jText_Telefono.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else if (jText_Codigo.getText().length() != 7) {
-            JOptionPane.showMessageDialog(null, "El código debe constar de 7 cifras");
+            JOptionPane.showMessageDialog(null, "El código debe constar de 7 "
+                    + "cifras");
         } else if (jText_Telefono.getText().length() != 10) {
-            JOptionPane.showMessageDialog(null, "El número de teléfono\ndebe constar de 10 cifras");
+            JOptionPane.showMessageDialog(null, "El número de teléfono\ndebe "
+                    + "constar de 10 cifras");
         } else {
             if (isNumeric(jText_Codigo.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "Ingresa solo códigos numéricos");
+                JOptionPane.showMessageDialog(null, "Ingresa solo códigos "
+                        + "numéricos");
             } else if (isNumeric(jText_Telefono.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "En el campo teléfono\nsolo ingresa números");
+                JOptionPane.showMessageDialog(null, "En el campo teléfono\n"
+                        + "solo ingresa números");
             } else {
-                Encargado encargado1 = encController.getEncargado(listaEncargado,
-                        jText_Codigo.getText());
+                Encargado encargado1 = encController.getEncargado(
+                        listaEncargado, jText_Codigo.getText());
                 if (encargado1 == null) {
                     encargado.setCodTrab(jText_Codigo.getText());
                     encargado.setNombre(jText_Nombre.getText());
                     encargado.setTelefono(jText_Telefono.getText());
-
                     limpiar();
                     jText_Codigo.setEditable(true);
-
-                    listaEncargado = encController.crearEncargado(listaEncargado,
-                            encargado);
+                    listaEncargado = encController.crearEncargado(
+                            listaEncargado, encargado);
                 } else {
                     JOptionPane.showMessageDialog(null, "La código ya está "
                             + "registrado");
                     jText_Codigo.setEditable(true);
                 }
-
             }
-
         }
         encController.mostrarEncargado(listaEncargado, modelo);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -312,14 +316,11 @@ public class PanelEncargado extends javax.swing.JPanel {
             } else {
                 listaEncargado = encController.eliminarEncargado(listaEncargado,
                         encargado.getCodTrab());
-
                 limpiar();
                 jText_Codigo.setEditable(true);
-
             }
         }
         encController.mostrarEncargado(listaEncargado, modelo);
-
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /*
@@ -327,35 +328,40 @@ public class PanelEncargado extends javax.swing.JPanel {
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Encargado encargado1 = new Encargado();
-
         if (jText_Codigo.getText().equals("")
                 || jText_Nombre.getText().equals("")
                 || jText_Telefono.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else if (jText_Codigo.getText().length() != 7) {
-            JOptionPane.showMessageDialog(null, "El código debe constar de 7 cifras");
+            JOptionPane.showMessageDialog(null, "El código debe constar de 7 "
+                    + "cifras");
         } else if (jText_Telefono.getText().length() != 10) {
-            JOptionPane.showMessageDialog(null, "El número de teléfono\ndebe constar de 10 cifras");
+            JOptionPane.showMessageDialog(null, "El número de teléfono\ndebe "
+                    + "constar de 10 cifras");
         } else {
             if (isNumeric(jText_Codigo.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "Ingresa solo códigos numéricos");
+                JOptionPane.showMessageDialog(null, "Ingresa solo códigos "
+                        + "numéricos");
             } else if (isNumeric(jText_Telefono.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "En el campo teléfono\nsolo ingresa números");
+                JOptionPane.showMessageDialog(null, "En el campo teléfono\n"
+                        + "solo ingresa números");
             } else {
                 encargado1.setCodTrab(jText_Codigo.getText());
                 encargado1.setNombre(jText_Nombre.getText());
                 encargado1.setTelefono(jText_Telefono.getText());
-
-                listaEncargado = encController.actualizarEncargado(listaEncargado, encargado1);
+                listaEncargado = encController.actualizarEncargado(
+                        listaEncargado, encargado1);
                 encController.mostrarEncargado(listaEncargado, modelo);
-
                 limpiar();
             }
         }
         jText_Codigo.setEditable(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-    
-    
+
+    /*
+    Muestra en los cuadros de texto los datos de un objeto seleccionado
+    desde la tabla
+     */
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jText_Codigo.setEditable(false);
         jText_Codigo.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
@@ -365,7 +371,7 @@ public class PanelEncargado extends javax.swing.JPanel {
         jText_Telefono.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
                 2).toString());
     }//GEN-LAST:event_jTable1MouseClicked
-    
+
     //Busca un objeto en la lista
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Encargado eBuscar = new Encargado();
@@ -383,7 +389,6 @@ public class PanelEncargado extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "El encargado no existe");
             }
-
         }
     }//GEN-LAST:event_jButton4ActionPerformed
     //Vacía el contenido de los cuadros de texto

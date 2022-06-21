@@ -48,11 +48,11 @@ public class PanelPrestamo extends javax.swing.JPanel {
     private int id;
 
     /**
-     * Constructor que recibe las listas cargadas de información inicializa
+     * Constructor que recibe las listas cargadas de información. Inicializa
      * algunos atributos
      */
-    public PanelPrestamo(List<Libro> listLibro, List<Usuario> listAlumno,
-            List<Encargado> listEncargado) {
+    public PanelPrestamo(List<Prestamo> listPrestamo, List<Libro> listLibro,
+            List<Usuario> listAlumno, List<Encargado> listEncargado) {
         initComponents();
 
         prestController = new PrestamoController();
@@ -64,18 +64,20 @@ public class PanelPrestamo extends javax.swing.JPanel {
         alumnoAux = new UsuarioController();
         encargadoAux = new EncargadoController();
 
-        listaPrestamo = new ArrayList<>();
+        listaPrestamo = listPrestamo;
         modelo = (DefaultTableModel) jTable1.getModel();
         listaIsbn = new ArrayList<>();
         jText_FechaSol.setText(formatter.format(new Date()));
         jText_FechaSol.setEditable(false);
-        
+        prestController.mostrarPrestamo(listPrestamo, listaLibro,
+                listaEncargado, listaAlumno, modelo);
+
         rellenarComboAlumno();
         rellenarComboEncargado();
         rellenarComboLibro();
     }
 
-    //Vacía la información de los jtext 
+    //Vacía la información del jtext de la fecha de entrega
     public void limpiar() {
         jText_FechaEnt.setText("00/00/0000");
     }
@@ -88,36 +90,46 @@ public class PanelPrestamo extends javax.swing.JPanel {
         prestamoLeer.setFechaEnt(ParseFecha(jText_FechaEnt.getText()));
         prestamoLeer.setMatricula(jComboBox1.getSelectedItem().toString());
         prestamoLeer.setCodTrab(jComboBox2.getSelectedItem().toString());
-
         listaIsbn.add(jComboBox3.getSelectedItem().toString());
-
         prestamoLeer.setNombres(listaIsbn);
         return prestamoLeer;
     }
 
+    /*
+    método para convertir una fecha a un formato predefinido
+     */
     public static Date ParseFecha(String fecha) {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaDate = null;
         try {
             fechaDate = formato.parse(fecha);
         } catch (ParseException ex) {
-            
+
         }
         return fechaDate;
     }
 
+    /*
+    Actualizamos la información del ComboBox alumno
+     */
     public void rellenarComboAlumno() {
         for (int i = 0; i < listaAlumno.size(); i++) {
             jComboBox1.addItem(listaAlumno.get(i).getMatricula());
         }
     }
 
+    /*
+    Actualizamos la información del ComboBox Encargado
+     */
     public void rellenarComboEncargado() {
         for (int i = 0; i < listaEncargado.size(); i++) {
             jComboBox2.addItem(listaEncargado.get(i).getCodTrab());
         }
     }
 
+    /*
+    Actualizamos la información del ComboBox Libro
+     */
     public void rellenarComboLibro() {
         for (int i = 0; i < listaLibro.size(); i++) {
             jComboBox3.addItem(listaLibro.get(i).getIsbn());
@@ -285,7 +297,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,9 +306,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jText_FechaSol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jComboBox2, 0, 74, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -304,16 +314,14 @@ public class PanelPrestamo extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jText_FechaEnt, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jComboBox3, 0, 74, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton6)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jComboBox1, 0, 74, Short.MAX_VALUE)))
                         .addGap(12, 12, 12)))
                 .addContainerGap())
         );
@@ -350,20 +358,16 @@ public class PanelPrestamo extends javax.swing.JPanel {
 
         Prestamo prestamo = new Prestamo();
 
-        Usuario alumno = alumnoAux.getUsuario(listaAlumno, jComboBox1.getSelectedItem().toString());
-        Libro libro = libroAux.getLibro(listaLibro, jComboBox3.getSelectedItem().toString());
-        Encargado encargado = encargadoAux.getEncargado(listaEncargado, jComboBox2.getSelectedItem().toString());
+        Usuario alumno = alumnoAux.getUsuario(listaAlumno,
+                jComboBox1.getSelectedItem().toString());
+        Libro libro = libroAux.getLibro(listaLibro,
+                jComboBox3.getSelectedItem().toString());
+        Encargado encargado = encargadoAux.getEncargado(listaEncargado,
+                jComboBox2.getSelectedItem().toString());
 
         if (jText_FechaEnt.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
-        } else if (alumno == null) {
-            JOptionPane.showMessageDialog(null, "El alumno no existe\n"
-                    + "regístralo antes");
-        } else if (libro == null) {
-            JOptionPane.showMessageDialog(null, "El libro no existe");
-        } else if (encargado == null) {
-            JOptionPane.showMessageDialog(null, "El encargado no existe\n "
-                    + "regístralo");
+
         } else {
             prestamo = leer();
             listaPrestamo = prestController.crearPrestamo(listaPrestamo,
@@ -382,7 +386,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
     Botón para eliminar un objeto de la lista
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if (jText_FechaSol.getText().equals("")) {
+        if (jText_FechaEnt.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
             Prestamo leerD = leer();
@@ -438,14 +442,16 @@ public class PanelPrestamo extends javax.swing.JPanel {
                 1).toString());
         jText_FechaEnt.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
                 2).toString());
-        jComboBox1.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 3));
-        jComboBox2.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 4));
-        jComboBox3.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(), 5));
+        jComboBox1.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
+                3));
+        jComboBox2.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
+                4));
+        jComboBox3.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
+                5));
     }//GEN-LAST:event_jTable1MouseClicked
 
     //Vacía el contenido de los cuadros de texto
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        jText_FechaSol.setEditable(true);
         limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -467,7 +473,8 @@ public class PanelPrestamo extends javax.swing.JPanel {
 
     //Busca un objeto dentro de la lista
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        Libro libroBuscar = libroAux.getLibro(listaLibro, jComboBox3.getSelectedItem().toString());
+        Libro libroBuscar = libroAux.getLibro(listaLibro,
+                jComboBox3.getSelectedItem().toString());
         if (libroBuscar != null) {
             listaIsbn.add(jComboBox3.getSelectedItem().toString());
         } else {

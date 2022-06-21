@@ -16,12 +16,15 @@ import java.util.List;
 import pojo.Usuario;
 import pojo.Libro;
 import pojo.Encargado;
+import pojo.Prestamo;
 
-public class VentanaPrincipal extends javax.swing.JFrame implements ActionListener {
+public class VentanaPrincipal extends javax.swing.JFrame implements
+        ActionListener {
 
     private List<Libro> listaLibro = new ArrayList<>();
     private List<Usuario> listaAlumno = new ArrayList<>();
     private List<Encargado> listaEncargado = new ArrayList<>();
+    private List<Prestamo> listaPrestamo = new ArrayList<>();
 
     PanelLibro panelLib;
     PanelAlumno panelAlum;
@@ -30,7 +33,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
 
     /*
     constructor para inicializar los componentes de la clase
-    */
+     */
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -39,7 +42,8 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
         panelLib = new PanelLibro(listaLibro);
         panelAlum = new PanelAlumno(listaAlumno);
         panelEnc = new PanelEncargado(listaEncargado);
-        panelPrest = new PanelPrestamo(listaLibro, listaAlumno, listaEncargado);
+        panelPrest = new PanelPrestamo(listaPrestamo, listaLibro, listaAlumno,
+                listaEncargado);
 
         contenedor.add(panelLib);
 
@@ -53,11 +57,11 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
         boton_Alum.addActionListener(this);
         boton_Enc.addActionListener(this);
         boton_Prest.addActionListener(this);
-
     }
+
     /*
     Deshabilita botones dependiendo de cual haya seleccionado el usuario
-    */
+     */
     private void deshabilitarBotones() {
         if (panelLib.isVisible()) {
             boton_Lib.setEnabled(false);
@@ -194,7 +198,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void boton_PrestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_PrestActionPerformed
-        
+
     }//GEN-LAST:event_boton_PrestActionPerformed
 
     /**
@@ -253,7 +257,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
     /*
     Método para ocultar o mostrar los páneles secundarios,
     validando el botón seleccionado
-    */
+     */
     public void actionPerformed(ActionEvent ae) {
         Object evt = ae.getSource();
         if (evt.equals(boton_Lib)) {
@@ -284,15 +288,15 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
             panelLib.setVisible(false);
             panelAlum.setVisible(false);
             panelEnc.setVisible(false);
-            panelPrest = new PanelPrestamo(listaLibro, listaAlumno, listaEncargado);
+            panelPrest = new PanelPrestamo(listaPrestamo, listaLibro,
+                    listaAlumno, listaEncargado);
             panelPrest.setVisible(true);
             contenedor.add(panelPrest);
             contenedor.validate();
             deshabilitarBotones();
         }
     }
-    
-    
+
     //Método que inicializa algunos datos dentro del programa para probarlo
     public void insertar() {
         Libro libro1 = new Libro();
