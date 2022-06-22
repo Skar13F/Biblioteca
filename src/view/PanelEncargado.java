@@ -77,9 +77,9 @@ public class PanelEncargado extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButton_agregar = new javax.swing.JButton();
+        jButton_actualizar = new javax.swing.JButton();
+        jButton_eliminar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jText_Codigo = new javax.swing.JTextField();
@@ -90,7 +90,7 @@ public class PanelEncargado extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        jButton_buscar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 51));
@@ -99,35 +99,35 @@ public class PanelEncargado extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(39, 154, 180));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(98, 193, 222));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
-        jButton1.setText("Agregar   ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_agregar.setBackground(new java.awt.Color(98, 193, 222));
+        jButton_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
+        jButton_agregar.setText("Agregar   ");
+        jButton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_agregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
+        jPanel1.add(jButton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
-        jButton2.setBackground(new java.awt.Color(98, 193, 222));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
-        jButton2.setText("Actualizar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton_actualizar.setBackground(new java.awt.Color(98, 193, 222));
+        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
+        jButton_actualizar.setText("Actualizar");
+        jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton_actualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
+        jPanel1.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
 
-        jButton3.setBackground(new java.awt.Color(98, 193, 222));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
-        jButton3.setText("Eliminar   ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton_eliminar.setBackground(new java.awt.Color(98, 193, 222));
+        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
+        jButton_eliminar.setText("Eliminar   ");
+        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton_eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, -1));
+        jPanel1.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, -1));
 
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
@@ -137,11 +137,32 @@ public class PanelEncargado extends javax.swing.JPanel {
 
         jText_Codigo.setBackground(new java.awt.Color(39, 154, 180));
         jText_Codigo.setMaximumSize(new java.awt.Dimension(150, 20));
+        jText_Codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jText_CodigoActionPerformed(evt);
+            }
+        });
+        jText_Codigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_CodigoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_CodigoKeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("Nombre");
 
         jText_Nombre.setBackground(new java.awt.Color(39, 154, 180));
         jText_Nombre.setMaximumSize(new java.awt.Dimension(200, 20));
+        jText_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_NombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_NombreKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Teléfono");
 
@@ -150,6 +171,14 @@ public class PanelEncargado extends javax.swing.JPanel {
         jText_Telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jText_TelefonoActionPerformed(evt);
+            }
+        });
+        jText_Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_TelefonoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_TelefonoKeyTyped(evt);
             }
         });
 
@@ -187,18 +216,26 @@ public class PanelEncargado extends javax.swing.JPanel {
         }
 
         jTextField1.setText("código");
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        jButton_buscar.setBorderPainted(false);
+        jButton_buscar.setContentAreaFilled(false);
+        jButton_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton_buscarActionPerformed(evt);
             }
         });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar.png"))); // NOI18N
-        jButton5.setText("Borrar");
+        jButton5.setText("Limpiar");
         jButton5.setContentAreaFilled(false);
         jButton5.setMaximumSize(new java.awt.Dimension(83, 24));
         jButton5.setMinimumSize(new java.awt.Dimension(83, 24));
@@ -224,14 +261,14 @@ public class PanelEncargado extends javax.swing.JPanel {
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel1)
                                 .addGap(33, 33, 33)
-                                .addComponent(jText_Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jText_Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(135, 135, 135)))
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jText_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
@@ -242,7 +279,7 @@ public class PanelEncargado extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jTextField1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2)))
                         .addGap(4, 4, 4)))
                 .addContainerGap())
@@ -263,10 +300,10 @@ public class PanelEncargado extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jTextField1)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -278,7 +315,7 @@ public class PanelEncargado extends javax.swing.JPanel {
     /*
     Botón para agregar un nuevo elemento (objeto) a la lista
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_agregarActionPerformed
         Encargado encargado = new Encargado();
         if (jText_Codigo.getText().equals("")
                 || jText_Nombre.getText().equals("")
@@ -316,12 +353,12 @@ public class PanelEncargado extends javax.swing.JPanel {
             }
         }
         encController.mostrarEncargado(listaEncargado, modelo);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton_agregarActionPerformed
 
     /*
     Botón para eliminar un objeto de la lista
      */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
         if (jText_Codigo.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Ingresa una matrícula\no "
                     + "rellena todos los campos");
@@ -339,12 +376,12 @@ public class PanelEncargado extends javax.swing.JPanel {
             }
         }
         encController.mostrarEncargado(listaEncargado, modelo);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButton_eliminarActionPerformed
 
     /*
     Botón para actualizar datos de un objeto dentro de la lista
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
         Encargado encargado1 = new Encargado();
         if (jText_Codigo.getText().equals("")
                 || jText_Nombre.getText().equals("")
@@ -374,7 +411,7 @@ public class PanelEncargado extends javax.swing.JPanel {
             }
         }
         jText_Codigo.setEditable(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton_actualizarActionPerformed
 
     /*
     Muestra en los cuadros de texto los datos de un objeto seleccionado
@@ -391,7 +428,7 @@ public class PanelEncargado extends javax.swing.JPanel {
     }//GEN-LAST:event_jTable1MouseClicked
 
     //Busca un objeto en la lista
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_buscarActionPerformed
         Encargado eBuscar = new Encargado();
         if (jTextField1.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "ingresa el código de "
@@ -408,19 +445,87 @@ public class PanelEncargado extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "El encargado no existe");
             }
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton_buscarActionPerformed
     //Vacía el contenido de los cuadros de texto
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jText_Codigo.setEditable(true);
         limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jText_CodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CodigoKeyTyped
+        if (jText_Codigo.getText().length() >= 7) {
+            evt.consume();
+        } else {
+            char letra = evt.getKeyChar();
+            if (!Character.isDigit(letra)) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_jText_CodigoKeyTyped
+
+    private void jText_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombreKeyTyped
+        if (jText_Nombre.getText().length() >= 25) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_NombreKeyTyped
+
+    private void jText_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TelefonoKeyTyped
+        if (jText_Telefono.getText().length() >= 10) {
+            evt.consume();
+        } else {
+            char letra = evt.getKeyChar();
+            if (!Character.isDigit(letra)) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_jText_TelefonoKeyTyped
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        if (jText_Codigo.getText().length() >= 7) {
+            evt.consume();
+        } else {
+            char letra = evt.getKeyChar();
+            if (!Character.isDigit(letra)) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jText_CodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CodigoKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jText_Nombre.requestFocus();
+
+        }
+    }//GEN-LAST:event_jText_CodigoKeyPressed
+
+    private void jText_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_CodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jText_CodigoActionPerformed
+
+    private void jText_NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombreKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jText_Telefono.requestFocus();
+        }
+    }//GEN-LAST:event_jText_NombreKeyPressed
+
+    private void jText_TelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TelefonoKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jButton_agregar.requestFocus();
+        }
+    }//GEN-LAST:event_jText_TelefonoKeyPressed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+if (evt.getKeyCode()==evt.VK_ENTER) {
+            jButton_buscar.requestFocus();
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton_actualizar;
+    private javax.swing.JButton jButton_agregar;
+    private javax.swing.JButton jButton_buscar;
+    private javax.swing.JButton jButton_eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

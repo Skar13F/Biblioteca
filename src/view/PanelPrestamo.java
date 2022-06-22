@@ -82,6 +82,9 @@ public class PanelPrestamo extends javax.swing.JPanel {
     //Vacía la información del jtext de la fecha de entrega
     public void limpiar() {
         jText_FechaEnt.setText("00/00/0000");
+        jComboBox_matricula.setSelectedItem("- - Matrícula - -");
+        jComboBox_encargado.setSelectedItem("- - Encargado - -");
+        jComboBox_isbn.setSelectedItem("- - ISBN - -");
     }
 
     //Lee datos de las entradas de texto y las guarda en un objeto préstamo
@@ -90,9 +93,9 @@ public class PanelPrestamo extends javax.swing.JPanel {
         prestamoLeer.setId(id);
         prestamoLeer.setFechaSol((ParseFecha(jText_FechaSol.getText())));
         prestamoLeer.setFechaEnt(ParseFecha(jText_FechaEnt.getText()));
-        prestamoLeer.setMatricula(jComboBox1.getSelectedItem().toString());
-        prestamoLeer.setCodTrab(jComboBox2.getSelectedItem().toString());
-        listaIsbn.add(jComboBox3.getSelectedItem().toString());
+        prestamoLeer.setMatricula(jComboBox_matricula.getSelectedItem().toString());
+        prestamoLeer.setCodTrab(jComboBox_encargado.getSelectedItem().toString());
+        listaIsbn.add(jComboBox_isbn.getSelectedItem().toString());
         prestamoLeer.setNombres(listaIsbn);
         return prestamoLeer;
     }
@@ -116,7 +119,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
      */
     public void rellenarComboAlumno() {
         for (int i = 0; i < listaAlumno.size(); i++) {
-            jComboBox1.addItem(listaAlumno.get(i).getMatricula());
+            jComboBox_matricula.addItem(listaAlumno.get(i).getMatricula());
         }
     }
 
@@ -125,7 +128,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
      */
     public void rellenarComboEncargado() {
         for (int i = 0; i < listaEncargado.size(); i++) {
-            jComboBox2.addItem(listaEncargado.get(i).getCodTrab());
+            jComboBox_encargado.addItem(listaEncargado.get(i).getCodTrab());
         }
     }
 
@@ -134,7 +137,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
      */
     public void rellenarComboLibro() {
         for (int i = 0; i < listaLibro.size(); i++) {
-            jComboBox3.addItem(listaLibro.get(i).getIsbn());
+            jComboBox_isbn.addItem(listaLibro.get(i).getIsbn());
         }
     }
 
@@ -162,9 +165,9 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox_matricula = new javax.swing.JComboBox<>();
+        jComboBox_encargado = new javax.swing.JComboBox<>();
+        jComboBox_isbn = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 51));
@@ -206,6 +209,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
         jPanel2.setBackground(new java.awt.Color(100, 176, 176));
+        jPanel2.setPreferredSize(new java.awt.Dimension(615, 347));
 
         jLabel1.setText("Solicitud");
 
@@ -222,6 +226,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jText_FechaEnt.setBackground(new java.awt.Color(39, 154, 180));
         jText_FechaEnt.setText("00/00/0000");
         jText_FechaEnt.setMaximumSize(new java.awt.Dimension(200, 20));
+        jText_FechaEnt.setMinimumSize(new java.awt.Dimension(74, 24));
 
         jLabel3.setText("Matrícula");
 
@@ -275,25 +280,29 @@ public class PanelPrestamo extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+        jComboBox_matricula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- - Matrícula - -" }));
+        jComboBox_matricula.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
+                jComboBox_matriculaItemStateChanged(evt);
             }
         });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox_matricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboBox_matriculaActionPerformed(evt);
             }
         });
 
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox_encargado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- - Encargado - -" }));
+        jComboBox_encargado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                jComboBox_encargadoActionPerformed(evt);
             }
         });
+
+        jComboBox_isbn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- - ISBN - -" }));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar.png"))); // NOI18N
-        jButton5.setText("Borrar");
+        jButton5.setText("Limpiar");
         jButton5.setContentAreaFilled(false);
         jButton5.setMaximumSize(new java.awt.Dimension(83, 24));
         jButton5.setMinimumSize(new java.awt.Dimension(83, 24));
@@ -316,30 +325,33 @@ public class PanelPrestamo extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jText_FechaSol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBox_encargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 7, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox_isbn, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jText_FechaEnt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jText_FechaEnt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox3, 0, 1, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel3)
+                    .addComponent(jButton6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18))
+                        .addComponent(jComboBox_matricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(17, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,18 +363,18 @@ public class PanelPrestamo extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(jText_FechaEnt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox_matricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jButton6)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_encargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_isbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                .addGap(15, 15, 15))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -376,15 +388,21 @@ public class PanelPrestamo extends javax.swing.JPanel {
         Prestamo prestamo = new Prestamo();
 
         Usuario alumno = alumnoAux.getUsuario(listaAlumno,
-                jComboBox1.getSelectedItem().toString());
+                jComboBox_matricula.getSelectedItem().toString());
         Libro libro = libroAux.getLibro(listaLibro,
-                jComboBox3.getSelectedItem().toString());
+                jComboBox_isbn.getSelectedItem().toString());
         Encargado encargado = encargadoAux.getEncargado(listaEncargado,
-                jComboBox2.getSelectedItem().toString());
+                jComboBox_encargado.getSelectedItem().toString());
 
         if (jText_FechaEnt.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Rellena todos los campos");
+            JOptionPane.showMessageDialog(null, "Rellena el campo\nfecha de entrega");
 
+        } else if (jComboBox_matricula.getSelectedItem().equals("- - Matrícula - -")) {
+            JOptionPane.showMessageDialog(null, "Selecciona una matrícula");
+        } else if (jComboBox_encargado.getSelectedItem().equals("- - Encargado - -")) {
+            JOptionPane.showMessageDialog(null, "Selecciona un código de trabajador");
+        } else if (jComboBox_isbn.getSelectedItem().equals("- - ISBN - -")) {
+            JOptionPane.showMessageDialog(null, "Selecciona una libro");
         } else {
             prestamo = leer();
             listaPrestamo = prestController.crearPrestamo(listaPrestamo,
@@ -431,6 +449,12 @@ public class PanelPrestamo extends javax.swing.JPanel {
         Prestamo prestamo1 = new Prestamo();
         if (jText_FechaSol.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
+        } else if (jComboBox_matricula.getSelectedItem().equals("- - Matrícula - -")) {
+            JOptionPane.showMessageDialog(null, "Selecciona una matrícula");
+        } else if (jComboBox_encargado.getSelectedItem().equals("- - Encargado - -")) {
+            JOptionPane.showMessageDialog(null, "Selecciona un código de trabajador");
+        } else if (jComboBox_isbn.getSelectedItem().equals("- - ISBN - -")) {
+            JOptionPane.showMessageDialog(null, "Selecciona una libro");
         } else {
             prestamo1 = leer();
             listaPrestamo = prestController.actualizarPrestamo(listaPrestamo,
@@ -459,12 +483,13 @@ public class PanelPrestamo extends javax.swing.JPanel {
                 1).toString());
         jText_FechaEnt.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
                 2).toString());
-        jComboBox1.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
+        jComboBox_matricula.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
                 3));
-        jComboBox2.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
+        jComboBox_encargado.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
                 4));
-        jComboBox3.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
-                5));
+        String isbn = jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString();
+        jComboBox_isbn.setSelectedItem(isbn.substring(1, isbn.length() - 1));
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     //Vacía el contenido de los cuadros de texto
@@ -476,24 +501,24 @@ public class PanelPrestamo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_FechaSolActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboBox_matriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_matriculaActionPerformed
 
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboBox_matriculaActionPerformed
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+    private void jComboBox_matriculaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_matriculaItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    }//GEN-LAST:event_jComboBox_matriculaItemStateChanged
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void jComboBox_encargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_encargadoActionPerformed
 
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_jComboBox_encargadoActionPerformed
 
     //Busca un objeto dentro de la lista
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         Libro libroBuscar = libroAux.getLibro(listaLibro,
-                jComboBox3.getSelectedItem().toString());
+                jComboBox_isbn.getSelectedItem().toString());
         if (libroBuscar != null) {
-            listaIsbn.add(jComboBox3.getSelectedItem().toString());
+            listaIsbn.add(jComboBox_isbn.getSelectedItem().toString());
         } else {
             JOptionPane.showMessageDialog(null, "no hay registro del libro");
         }
@@ -505,9 +530,9 @@ public class PanelPrestamo extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox_encargado;
+    private javax.swing.JComboBox<String> jComboBox_isbn;
+    private javax.swing.JComboBox<String> jComboBox_matricula;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

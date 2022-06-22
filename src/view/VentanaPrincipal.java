@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import pojo.Usuario;
 import pojo.Libro;
 import pojo.Encargado;
@@ -112,7 +113,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(675, 400));
-        setPreferredSize(new java.awt.Dimension(900, 500));
+        setPreferredSize(new java.awt.Dimension(950, 600));
 
         contenedor.setPreferredSize(new java.awt.Dimension(800, 400));
         contenedor.setLayout(new java.awt.BorderLayout());
@@ -194,7 +195,10 @@ public class VentanaPrincipal extends javax.swing.JFrame implements
     }//GEN-LAST:event_boton_LibActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.exit(0);
+        int respuesta = JOptionPane.showConfirmDialog(null, "Desea Salir?","Confirmar Salida",JOptionPane.YES_NO_OPTION);
+        if (respuesta==0) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void boton_PrestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_PrestActionPerformed

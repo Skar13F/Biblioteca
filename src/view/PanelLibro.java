@@ -69,9 +69,9 @@ public class PanelLibro extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButton_agregar = new javax.swing.JButton();
+        jButton_actualizar = new javax.swing.JButton();
+        jButton_eliminar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jText_ISBN = new javax.swing.JTextField();
@@ -86,7 +86,7 @@ public class PanelLibro extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        jButton_buscar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 51));
@@ -95,35 +95,35 @@ public class PanelLibro extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(39, 154, 180));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(98, 193, 222));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregarL.png"))); // NOI18N
-        jButton1.setText("Agregar   ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_agregar.setBackground(new java.awt.Color(98, 193, 222));
+        jButton_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregarL.png"))); // NOI18N
+        jButton_agregar.setText("Agregar   ");
+        jButton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_agregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
+        jPanel1.add(jButton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
-        jButton2.setBackground(new java.awt.Color(98, 193, 222));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
-        jButton2.setText("Actualizar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton_actualizar.setBackground(new java.awt.Color(98, 193, 222));
+        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
+        jButton_actualizar.setText("Actualizar");
+        jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton_actualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
+        jPanel1.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
 
-        jButton3.setBackground(new java.awt.Color(98, 193, 222));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
-        jButton3.setText("Eliminar   ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton_eliminar.setBackground(new java.awt.Color(98, 193, 222));
+        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
+        jButton_eliminar.setText("Eliminar   ");
+        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton_eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, -1));
+        jPanel1.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, -1));
 
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
@@ -133,19 +133,43 @@ public class PanelLibro extends javax.swing.JPanel {
 
         jText_ISBN.setBackground(new java.awt.Color(39, 154, 180));
         jText_ISBN.setMaximumSize(new java.awt.Dimension(150, 20));
+        jText_ISBN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_ISBNKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_ISBNKeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("Título");
 
         jText_Titulo.setBackground(new java.awt.Color(39, 154, 180));
         jText_Titulo.setMaximumSize(new java.awt.Dimension(200, 20));
+        jText_Titulo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_TituloKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_TituloKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Género");
 
         jText_Genero.setBackground(new java.awt.Color(39, 154, 180));
-        jText_Genero.setMaximumSize(new java.awt.Dimension(90, 20));
+        jText_Genero.setMaximumSize(new java.awt.Dimension(120, 20));
         jText_Genero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jText_GeneroActionPerformed(evt);
+            }
+        });
+        jText_Genero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_GeneroKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_GeneroKeyTyped(evt);
             }
         });
 
@@ -153,6 +177,14 @@ public class PanelLibro extends javax.swing.JPanel {
 
         jText_Autor.setBackground(new java.awt.Color(39, 154, 180));
         jText_Autor.setMaximumSize(new java.awt.Dimension(150, 20));
+        jText_Autor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_AutorKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_AutorKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Cantidad");
 
@@ -163,6 +195,9 @@ public class PanelLibro extends javax.swing.JPanel {
             }
         });
         jText_Cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_CantidadKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jText_CantidadKeyTyped(evt);
             }
@@ -201,27 +236,32 @@ public class PanelLibro extends javax.swing.JPanel {
             jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
             jTable1.getColumnModel().getColumn(3).setMinWidth(70);
             jTable1.getColumnModel().getColumn(3).setPreferredWidth(70);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(70);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(120);
             jTable1.getColumnModel().getColumn(4).setMinWidth(75);
             jTable1.getColumnModel().getColumn(4).setPreferredWidth(75);
             jTable1.getColumnModel().getColumn(4).setMaxWidth(75);
         }
 
         jTextField1.setText("isbn");
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        jButton4.setContentAreaFilled(false);
-        jButton4.setMaximumSize(new java.awt.Dimension(24, 24));
-        jButton4.setMinimumSize(new java.awt.Dimension(24, 24));
-        jButton4.setPreferredSize(new java.awt.Dimension(24, 24));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        jButton_buscar.setContentAreaFilled(false);
+        jButton_buscar.setMaximumSize(new java.awt.Dimension(24, 24));
+        jButton_buscar.setMinimumSize(new java.awt.Dimension(24, 24));
+        jButton_buscar.setPreferredSize(new java.awt.Dimension(24, 24));
+        jButton_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton_buscarActionPerformed(evt);
             }
         });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar.png"))); // NOI18N
-        jButton5.setText("borar");
+        jButton5.setText("Limpiar");
         jButton5.setContentAreaFilled(false);
         jButton5.setMaximumSize(new java.awt.Dimension(70, 24));
         jButton5.setMinimumSize(new java.awt.Dimension(70, 24));
@@ -240,7 +280,7 @@ public class PanelLibro extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,14 +303,14 @@ public class PanelLibro extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jTextField1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(16, 16, 16)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                                    .addComponent(jText_Genero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                    .addComponent(jText_Genero, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -295,10 +335,10 @@ public class PanelLibro extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                .addGap(15, 15, 15))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -311,7 +351,7 @@ public class PanelLibro extends javax.swing.JPanel {
     /*
     Botón para agregar un nuevo elemento (objeto) a la lista
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_agregarActionPerformed
         Libro libro = new Libro();
         if (jText_ISBN.getText().equals("") || jText_Titulo.getText().equals("")
                 || jText_Genero.getText().equals("")
@@ -337,12 +377,12 @@ public class PanelLibro extends javax.swing.JPanel {
         }
 
         libController.mostrarlibro(listaLibro, modelo);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton_agregarActionPerformed
 
     /*
     Botón para eliminar un objeto de la lista
      */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
         if (jText_ISBN.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Ingresa un isbn\no rellena "
                     + "todos los campos");
@@ -360,12 +400,12 @@ public class PanelLibro extends javax.swing.JPanel {
             }
         }
         libController.mostrarlibro(listaLibro, modelo);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButton_eliminarActionPerformed
 
     /*
     Botón para actualizar datos de un objeto dentro de la lista
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
         Libro libro1 = new Libro();
         if (jText_ISBN.getText().equals("")
                 || jText_Titulo.getText().equals("")
@@ -380,7 +420,7 @@ public class PanelLibro extends javax.swing.JPanel {
             limpiar();
         }
         jText_ISBN.setEditable(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton_actualizarActionPerformed
     /*
     Muestra en los cuadros de texto los datos de un objeto seleccionado
     desde la tabla
@@ -399,7 +439,7 @@ public class PanelLibro extends javax.swing.JPanel {
                 4).toString());
     }//GEN-LAST:event_jTable1MouseClicked
     //Busca un objeto dentro de la lista
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_buscarActionPerformed
         limpiar();
         Libro lbuscar = new Libro();
         if (jTextField1.getText().equals("")) {
@@ -418,7 +458,7 @@ public class PanelLibro extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "El libro no existe");
             }
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton_buscarActionPerformed
 
     //Vacía el contenido de los cuadros de texto
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -432,19 +472,83 @@ public class PanelLibro extends javax.swing.JPanel {
 
     //valida que la entrada del teclado sea solo números
     private void jText_CantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CantidadKeyTyped
-        char letra = evt.getKeyChar();
-        if (Character.isLetter(letra)) {
+        if (jText_Cantidad.getText().length() > 2) {
             evt.consume();
-            JOptionPane.showMessageDialog(null, "Solo se admiten números");
+        } else {
+            char letra = evt.getKeyChar();
+            if (!Character.isDigit(letra)) {
+                evt.consume();
+            }
         }
+
     }//GEN-LAST:event_jText_CantidadKeyTyped
 
+    private void jText_GeneroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_GeneroKeyTyped
+        if (jText_Genero.getText().length() >= 15) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_GeneroKeyTyped
+
+    private void jText_TituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TituloKeyTyped
+        if (jText_Titulo.getText().length() >= 30) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_TituloKeyTyped
+
+    private void jText_ISBNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ISBNKeyTyped
+        if (jText_ISBN.getText().length() >= 13) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_ISBNKeyTyped
+
+    private void jText_AutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_AutorKeyTyped
+        if (jText_Autor.getText().length() >= 25) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_AutorKeyTyped
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        if (jTextField1.getText().length() >= 13) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jText_ISBNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ISBNKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jText_Titulo.requestFocus();
+        }
+    }//GEN-LAST:event_jText_ISBNKeyPressed
+
+    private void jText_TituloKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TituloKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jText_Genero.requestFocus();
+        }
+    }//GEN-LAST:event_jText_TituloKeyPressed
+
+    private void jText_GeneroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_GeneroKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jText_Autor.requestFocus();
+        }
+    }//GEN-LAST:event_jText_GeneroKeyPressed
+
+    private void jText_AutorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_AutorKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jText_Cantidad.requestFocus();
+        }
+    }//GEN-LAST:event_jText_AutorKeyPressed
+
+    private void jText_CantidadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CantidadKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jButton_agregar.requestFocus();
+        }
+    }//GEN-LAST:event_jText_CantidadKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton_actualizar;
+    private javax.swing.JButton jButton_agregar;
+    private javax.swing.JButton jButton_buscar;
+    private javax.swing.JButton jButton_eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

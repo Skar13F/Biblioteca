@@ -38,8 +38,10 @@ public class PanelAlumno extends javax.swing.JPanel {
     public void limpiar() {
         jText_Matricula.setText("");
         jText_Nombre.setText("");
-        jText_Carrera.setText("");
-        jText_Semestre.setText("");
+        jComboBox_carrera.setSelectedItem("- - Carrera - -");
+        jComboBox_semestre.setSelectedItem("- - Semestre - -");
+        //jText_Carrera.setText("");
+        //jText_Semestre.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -47,23 +49,21 @@ public class PanelAlumno extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButton_agregar = new javax.swing.JButton();
+        jButton_actualizar = new javax.swing.JButton();
+        jButton_eliminar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jText_Matricula = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jText_Nombre = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jText_Carrera = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jText_Semestre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        jButton_buscar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jComboBox_carrera = new javax.swing.JComboBox<>();
+        jComboBox_semestre = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 51));
         setLayout(new java.awt.BorderLayout());
@@ -71,35 +71,35 @@ public class PanelAlumno extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(39, 154, 180));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(98, 193, 222));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
-        jButton1.setText("Agregar   ");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_agregar.setBackground(new java.awt.Color(98, 193, 222));
+        jButton_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
+        jButton_agregar.setText("Agregar   ");
+        jButton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_agregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
+        jPanel1.add(jButton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
-        jButton2.setBackground(new java.awt.Color(98, 193, 222));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
-        jButton2.setText("Actualizar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton_actualizar.setBackground(new java.awt.Color(98, 193, 222));
+        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
+        jButton_actualizar.setText("Actualizar");
+        jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton_actualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
+        jPanel1.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
 
-        jButton3.setBackground(new java.awt.Color(98, 193, 222));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
-        jButton3.setText("Eliminar   ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton_eliminar.setBackground(new java.awt.Color(98, 193, 222));
+        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
+        jButton_eliminar.setText("Eliminar   ");
+        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton_eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, -1));
+        jPanel1.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, -1));
 
         add(jPanel1, java.awt.BorderLayout.LINE_END);
 
@@ -109,26 +109,27 @@ public class PanelAlumno extends javax.swing.JPanel {
 
         jText_Matricula.setBackground(new java.awt.Color(39, 154, 180));
         jText_Matricula.setMaximumSize(new java.awt.Dimension(150, 20));
+        jText_Matricula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_MatriculaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_MatriculaKeyTyped(evt);
+            }
+        });
 
         jLabel2.setText("Nombre");
 
         jText_Nombre.setBackground(new java.awt.Color(39, 154, 180));
         jText_Nombre.setMaximumSize(new java.awt.Dimension(200, 20));
-
-        jLabel3.setText("Carrera");
-
-        jText_Carrera.setBackground(new java.awt.Color(39, 154, 180));
-        jText_Carrera.setMaximumSize(new java.awt.Dimension(90, 20));
-        jText_Carrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jText_CarreraActionPerformed(evt);
+        jText_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jText_NombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jText_NombreKeyTyped(evt);
             }
         });
-
-        jLabel4.setText("Semestre");
-
-        jText_Semestre.setBackground(new java.awt.Color(39, 154, 180));
-        jText_Semestre.setMaximumSize(new java.awt.Dimension(150, 20));
 
         jTable1.setBackground(new java.awt.Color(66, 248, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -166,18 +167,26 @@ public class PanelAlumno extends javax.swing.JPanel {
         }
 
         jTextField1.setText("matrícula");
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButton_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        jButton_buscar.setBorderPainted(false);
+        jButton_buscar.setContentAreaFilled(false);
+        jButton_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton_buscarActionPerformed(evt);
             }
         });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar.png"))); // NOI18N
-        jButton5.setText("Borrar");
+        jButton5.setText("Limpiar");
         jButton5.setContentAreaFilled(false);
         jButton5.setMaximumSize(new java.awt.Dimension(83, 24));
         jButton5.setMinimumSize(new java.awt.Dimension(83, 24));
@@ -185,6 +194,20 @@ public class PanelAlumno extends javax.swing.JPanel {
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
+            }
+        });
+
+        jComboBox_carrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- - Carrera - -", "L. Informática", "L. A. Municipal", "L. A. Pública", "L. A. Empresarial", "L. Nutrición", "L. Medicina", "L. Odontología", "L. Enfermería" }));
+        jComboBox_carrera.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox_carreraKeyPressed(evt);
+            }
+        });
+
+        jComboBox_semestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- - Semestre - -", "Primero", "Segundo", "Tercero", "Cuarto", "Quinto", "Sexto", "Séptimo", "Octavo", "Noveno", "Décimo" }));
+        jComboBox_semestre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox_semestreKeyPressed(evt);
             }
         });
 
@@ -200,33 +223,29 @@ public class PanelAlumno extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(12, 12, 12)
+                                .addComponent(jText_Matricula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jComboBox_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jText_Matricula, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(jText_Semestre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addGap(118, 118, 118)
-                                        .addComponent(jLabel3))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jText_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                        .addGap(68, 68, 68)))
-                                .addGap(14, 14, 14)
-                                .addComponent(jText_Carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jText_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jComboBox_semestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 8, Short.MAX_VALUE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(7, 7, 7)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(4, 4, 4)))
                 .addContainerGap())
         );
@@ -239,37 +258,31 @@ public class PanelAlumno extends javax.swing.JPanel {
                     .addComponent(jText_Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jText_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addComponent(jText_Carrera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox_semestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jText_Semestre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                .addGap(15, 15, 15))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jText_CarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_CarreraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jText_CarreraActionPerformed
-
     /*
     Botón para agregar un nuevo elemento (objeto) a la lista
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_agregarActionPerformed
         Usuario usuario = new Usuario();
         if (jText_Matricula.getText().equals("")
                 || jText_Nombre.getText().equals("")
-                || jText_Carrera.getText().equals("")
-                || jText_Semestre.getText().equals("")) {
+                || jComboBox_carrera.getSelectedItem().equals("- - Carrera - -")
+                || jComboBox_semestre.getSelectedItem().equals("- - Semestre - -")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
             Usuario usuario1 = userController.getUsuario(listaUsuario,
@@ -277,8 +290,9 @@ public class PanelAlumno extends javax.swing.JPanel {
             if (usuario1 == null) {
                 usuario.setMatricula(jText_Matricula.getText());
                 usuario.setNombre(jText_Nombre.getText());
-                usuario.setCarrera(jText_Carrera.getText());
-                usuario.setSemestre(jText_Semestre.getText());
+                usuario.setCarrera(jComboBox_carrera.getSelectedItem().toString());
+                //usuario.setCarrera(jText_Carrera.getText());
+                usuario.setSemestre(jComboBox_semestre.getSelectedItem().toString());
                 limpiar();
                 jText_Matricula.setEditable(true);
                 listaUsuario = userController.crearUsuario(listaUsuario,
@@ -290,11 +304,11 @@ public class PanelAlumno extends javax.swing.JPanel {
             }
         }
         userController.mostrarUsuario(listaUsuario, modelo);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton_agregarActionPerformed
     /*
     Botón para eliminar un objeto de la lista
      */
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
         if (jText_Matricula.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Ingresa una matrícula\no "
                     + "rellena todos los campos");
@@ -312,30 +326,32 @@ public class PanelAlumno extends javax.swing.JPanel {
             }
         }
         userController.mostrarUsuario(listaUsuario, modelo);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButton_eliminarActionPerformed
 
     /*
     Botón para actualizar datos de un objeto dentro de la lista
      */
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
         Usuario usuario1 = new Usuario();
         if (jText_Matricula.getText().equals("")
                 || jText_Nombre.getText().equals("")
-                || jText_Carrera.getText().equals("")
-                || jText_Semestre.getText().equals("")) {
+                || jComboBox_carrera.getSelectedItem().equals("- - Carrera - -")
+                || jComboBox_semestre.getSelectedItem().equals("- - Semestre - -")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
             usuario1.setMatricula(jText_Matricula.getText());
             usuario1.setNombre(jText_Nombre.getText());
-            usuario1.setCarrera(jText_Carrera.getText());
-            usuario1.setSemestre(jText_Semestre.getText());
+            usuario1.setCarrera(jComboBox_carrera.getSelectedItem().toString());
+            usuario1.setSemestre(jComboBox_semestre.getSelectedItem().toString());
+            //usuario1.setCarrera(jText_Carrera.getText());
+            //usuario1.setSemestre(jText_Semestre.getText());
             listaUsuario = userController.actualizarUsuario(listaUsuario,
                     usuario1);
             userController.mostrarUsuario(listaUsuario, modelo);
             limpiar();
         }
         jText_Matricula.setEditable(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton_actualizarActionPerformed
 
     /*
     Muestra en los cuadros de texto los datos de un objeto seleccionado
@@ -347,14 +363,18 @@ public class PanelAlumno extends javax.swing.JPanel {
                 0).toString());
         jText_Nombre.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
                 1).toString());
-        jText_Carrera.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
-                3).toString());
-        jText_Semestre.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+        jComboBox_carrera.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
                 2).toString());
+        //jText_Carrera.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+        //3).toString());
+        jComboBox_semestre.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
+                3).toString());
+        //jText_Semestre.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
+        //      2).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     //Busca un objeto dentro de la lista
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_buscarActionPerformed
         Usuario ubuscar = new Usuario();
         if (jTextField1.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "ingresa la matrícula del "
@@ -366,13 +386,15 @@ public class PanelAlumno extends javax.swing.JPanel {
                 jText_Matricula.setEditable(false);
                 jText_Matricula.setText(ubuscar.getMatricula());
                 jText_Nombre.setText(ubuscar.getNombre());
-                jText_Carrera.setText(ubuscar.getCarrera());
-                jText_Semestre.setText(ubuscar.getSemestre());
+                jComboBox_carrera.setSelectedItem(ubuscar.getCarrera());
+                jComboBox_semestre.setSelectedItem(ubuscar.getSemestre());
+                //jText_Carrera.setText(ubuscar.getCarrera());
+                //jText_Semestre.setText(ubuscar.getSemestre());
             } else {
                 JOptionPane.showMessageDialog(null, "El alumno no existe");
             }
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton_buscarActionPerformed
 
     //Vacía el contenido de los cuadros de texto
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -380,24 +402,77 @@ public class PanelAlumno extends javax.swing.JPanel {
         limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jText_MatriculaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_MatriculaKeyTyped
+
+        if (jText_Matricula.getText().length() >= 10) {
+            evt.consume();
+        } else {
+            char letra = evt.getKeyChar();
+
+            if (!Character.isDigit(letra)) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_jText_MatriculaKeyTyped
+
+    private void jText_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombreKeyTyped
+        if (jText_Nombre.getText().length() >= 25) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jText_NombreKeyTyped
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        if (jTextField1.getText().length() >= 10) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jText_MatriculaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_MatriculaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jText_Nombre.requestFocus();
+        }
+    }//GEN-LAST:event_jText_MatriculaKeyPressed
+
+    private void jText_NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombreKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jComboBox_semestre.requestFocus();
+        }
+    }//GEN-LAST:event_jText_NombreKeyPressed
+
+    private void jComboBox_semestreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox_semestreKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jComboBox_carrera.requestFocus();
+        }
+    }//GEN-LAST:event_jComboBox_semestreKeyPressed
+
+    private void jComboBox_carreraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox_carreraKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jButton_agregar.requestFocus();
+        }
+    }//GEN-LAST:event_jComboBox_carreraKeyPressed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            jButton_buscar.requestFocus();
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton_actualizar;
+    private javax.swing.JButton jButton_agregar;
+    private javax.swing.JButton jButton_buscar;
+    private javax.swing.JButton jButton_eliminar;
+    private javax.swing.JComboBox<String> jComboBox_carrera;
+    private javax.swing.JComboBox<String> jComboBox_semestre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jText_Carrera;
     private javax.swing.JTextField jText_Matricula;
     private javax.swing.JTextField jText_Nombre;
-    private javax.swing.JTextField jText_Semestre;
     // End of variables declaration//GEN-END:variables
 }
