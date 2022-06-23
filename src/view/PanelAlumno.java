@@ -40,8 +40,6 @@ public class PanelAlumno extends javax.swing.JPanel {
         jText_Nombre.setText("");
         jComboBox_carrera.setSelectedItem("- - Carrera - -");
         jComboBox_semestre.setSelectedItem("- - Semestre - -");
-        //jText_Carrera.setText("");
-        //jText_Semestre.setText("");
     }
 
     @SuppressWarnings("unchecked")
@@ -280,19 +278,24 @@ public class PanelAlumno extends javax.swing.JPanel {
     private void jButton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_agregarActionPerformed
         Usuario usuario = new Usuario();
         if (jText_Matricula.getText().equals("")
-                || jText_Nombre.getText().equals("")
-                || jComboBox_carrera.getSelectedItem().equals("- - Carrera - -")
-                || jComboBox_semestre.getSelectedItem().equals("- - Semestre - -")) {
+                || jText_Nombre.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
+        } else if (jComboBox_semestre.getSelectedItem().equals("- - Semestre"
+                + " - -")) {
+            JOptionPane.showMessageDialog(null, "Selecciona un semestre");
+        } else if (jComboBox_carrera.getSelectedItem().equals("- - Carrera"
+                + " - -")) {
+            JOptionPane.showMessageDialog(null, "Selecciona una carrera");
         } else {
             Usuario usuario1 = userController.getUsuario(listaUsuario,
                     jText_Matricula.getText());
             if (usuario1 == null) {
                 usuario.setMatricula(jText_Matricula.getText());
                 usuario.setNombre(jText_Nombre.getText());
-                usuario.setCarrera(jComboBox_carrera.getSelectedItem().toString());
-                //usuario.setCarrera(jText_Carrera.getText());
-                usuario.setSemestre(jComboBox_semestre.getSelectedItem().toString());
+                usuario.setCarrera(jComboBox_carrera.getSelectedItem().
+                        toString());
+                usuario.setSemestre(jComboBox_semestre.getSelectedItem().
+                        toString());
                 limpiar();
                 jText_Matricula.setEditable(true);
                 listaUsuario = userController.crearUsuario(listaUsuario,
@@ -335,16 +338,17 @@ public class PanelAlumno extends javax.swing.JPanel {
         Usuario usuario1 = new Usuario();
         if (jText_Matricula.getText().equals("")
                 || jText_Nombre.getText().equals("")
-                || jComboBox_carrera.getSelectedItem().equals("- - Carrera - -")
-                || jComboBox_semestre.getSelectedItem().equals("- - Semestre - -")) {
+                || jComboBox_carrera.getSelectedItem().equals("- - Carrera -"
+                        + " -")
+                || jComboBox_semestre.getSelectedItem().equals("- - Semestre"
+                        + " - -")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
         } else {
             usuario1.setMatricula(jText_Matricula.getText());
             usuario1.setNombre(jText_Nombre.getText());
             usuario1.setCarrera(jComboBox_carrera.getSelectedItem().toString());
-            usuario1.setSemestre(jComboBox_semestre.getSelectedItem().toString());
-            //usuario1.setCarrera(jText_Carrera.getText());
-            //usuario1.setSemestre(jText_Semestre.getText());
+            usuario1.setSemestre(jComboBox_semestre.getSelectedItem().
+                    toString());
             listaUsuario = userController.actualizarUsuario(listaUsuario,
                     usuario1);
             userController.mostrarUsuario(listaUsuario, modelo);
@@ -363,14 +367,10 @@ public class PanelAlumno extends javax.swing.JPanel {
                 0).toString());
         jText_Nombre.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
                 1).toString());
-        jComboBox_carrera.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
-                2).toString());
-        //jText_Carrera.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
-        //3).toString());
-        jComboBox_semestre.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
-                3).toString());
-        //jText_Semestre.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
-        //      2).toString());
+        jComboBox_carrera.setSelectedItem(jTable1.getValueAt(jTable1.
+                getSelectedRow(), 2).toString());
+        jComboBox_semestre.setSelectedItem(jTable1.getValueAt(jTable1.
+                getSelectedRow(), 3).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     //Busca un objeto dentro de la lista
@@ -388,8 +388,6 @@ public class PanelAlumno extends javax.swing.JPanel {
                 jText_Nombre.setText(ubuscar.getNombre());
                 jComboBox_carrera.setSelectedItem(ubuscar.getCarrera());
                 jComboBox_semestre.setSelectedItem(ubuscar.getSemestre());
-                //jText_Carrera.setText(ubuscar.getCarrera());
-                //jText_Semestre.setText(ubuscar.getSemestre());
             } else {
                 JOptionPane.showMessageDialog(null, "El alumno no existe");
             }

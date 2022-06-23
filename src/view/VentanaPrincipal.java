@@ -112,7 +112,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(675, 400));
+        setMinimumSize(new java.awt.Dimension(950, 600));
         setPreferredSize(new java.awt.Dimension(950, 600));
 
         contenedor.setPreferredSize(new java.awt.Dimension(800, 400));

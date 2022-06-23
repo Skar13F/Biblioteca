@@ -91,10 +91,12 @@ public class PanelPrestamo extends javax.swing.JPanel {
     public Prestamo leer() {
         Prestamo prestamoLeer = new Prestamo();
         prestamoLeer.setId(id);
-        prestamoLeer.setFechaSol((ParseFecha(jText_FechaSol.getText())));
+        prestamoLeer.setFechaSol(ParseFecha(jText_FechaSol.getText()));
         prestamoLeer.setFechaEnt(ParseFecha(jText_FechaEnt.getText()));
-        prestamoLeer.setMatricula(jComboBox_matricula.getSelectedItem().toString());
-        prestamoLeer.setCodTrab(jComboBox_encargado.getSelectedItem().toString());
+        prestamoLeer.setMatricula(jComboBox_matricula.getSelectedItem().
+                toString());
+        prestamoLeer.setCodTrab(jComboBox_encargado.getSelectedItem().
+                toString());
         listaIsbn.add(jComboBox_isbn.getSelectedItem().toString());
         prestamoLeer.setNombres(listaIsbn);
         return prestamoLeer;
@@ -395,12 +397,16 @@ public class PanelPrestamo extends javax.swing.JPanel {
                 jComboBox_encargado.getSelectedItem().toString());
 
         if (jText_FechaEnt.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Rellena el campo\nfecha de entrega");
+            JOptionPane.showMessageDialog(null, "Rellena el campo\nfecha de "
+                    + "entrega");
 
-        } else if (jComboBox_matricula.getSelectedItem().equals("- - Matrícula - -")) {
+        } else if (jComboBox_matricula.getSelectedItem().equals("- - Matrícula"
+                + " - -")) {
             JOptionPane.showMessageDialog(null, "Selecciona una matrícula");
-        } else if (jComboBox_encargado.getSelectedItem().equals("- - Encargado - -")) {
-            JOptionPane.showMessageDialog(null, "Selecciona un código de trabajador");
+        } else if (jComboBox_encargado.getSelectedItem().equals("- - Encargado"
+                + " - -")) {
+            JOptionPane.showMessageDialog(null, "Selecciona un código de traba"
+                    + "jador");
         } else if (jComboBox_isbn.getSelectedItem().equals("- - ISBN - -")) {
             JOptionPane.showMessageDialog(null, "Selecciona una libro");
         } else {
@@ -449,10 +455,13 @@ public class PanelPrestamo extends javax.swing.JPanel {
         Prestamo prestamo1 = new Prestamo();
         if (jText_FechaSol.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellena todos los campos");
-        } else if (jComboBox_matricula.getSelectedItem().equals("- - Matrícula - -")) {
+        } else if (jComboBox_matricula.getSelectedItem().equals("- - Matrícula"
+                + " - -")) {
             JOptionPane.showMessageDialog(null, "Selecciona una matrícula");
-        } else if (jComboBox_encargado.getSelectedItem().equals("- - Encargado - -")) {
-            JOptionPane.showMessageDialog(null, "Selecciona un código de trabajador");
+        } else if (jComboBox_encargado.getSelectedItem().equals("- - Encargado"
+                + " - -")) {
+            JOptionPane.showMessageDialog(null, "Selecciona un código de traba"
+                    + "jador");
         } else if (jComboBox_isbn.getSelectedItem().equals("- - ISBN - -")) {
             JOptionPane.showMessageDialog(null, "Selecciona una libro");
         } else {

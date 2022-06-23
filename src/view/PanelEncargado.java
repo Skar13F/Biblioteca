@@ -1,6 +1,6 @@
 /* Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 03 de junio de 2022
- * Fecha de actualización: 09 de junio de 2022
+ * Fecha de actualización: 22 de junio de 2022
  * Descripción: clase JPanel para controlar las operaciones CRUD
                 aplicados a los objetos Encargado
  */
