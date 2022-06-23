@@ -1,10 +1,11 @@
-/* Autor: Oscar Fuentes Alvarado
+/**
+ * Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 01 de junio de 2022
  * Fecha de actualización: 09 de junio de 2022
  * Descripción: clase JPanel para controlar las operaciones CRUD
-                aplicados a los objetos Prestamos, además enlazamos
-                las listas provenientes de otros páneles para ocupar
-                su información
+ * aplicados a los objetos Prestamos, además enlazamos
+ * las listas provenientes de otros páneles para ocupar
+ * su información
  */
 package view;
 
@@ -79,7 +80,9 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
     }
 
-    //Vacía la información del jtext de la fecha de entrega
+    /**
+     * Vacía la información del jtext de la fecha de entrega
+     */
     public void limpiar() {
         jText_FechaEnt.setText("00/00/0000");
         jComboBox_matricula.setSelectedItem("- - Matrícula - -");
@@ -87,7 +90,9 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jComboBox_isbn.setSelectedItem("- - ISBN - -");
     }
 
-    //Lee datos de las entradas de texto y las guarda en un objeto préstamo
+    /**
+     * Lee datos de las entradas de texto y las guarda en un objeto préstamo
+     */
     public Prestamo leer() {
         Prestamo prestamoLeer = new Prestamo();
         prestamoLeer.setId(id);
@@ -102,8 +107,8 @@ public class PanelPrestamo extends javax.swing.JPanel {
         return prestamoLeer;
     }
 
-    /*
-    método para convertir una fecha a un formato predefinido
+    /**
+     * Método para convertir una fecha a un formato predefinido
      */
     public static Date ParseFecha(String fecha) {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -116,8 +121,8 @@ public class PanelPrestamo extends javax.swing.JPanel {
         return fechaDate;
     }
 
-    /*
-    Actualizamos la información del ComboBox alumno
+    /**
+     * Actualizamos la información del ComboBox alumno
      */
     public void rellenarComboAlumno() {
         for (int i = 0; i < listaAlumno.size(); i++) {
@@ -125,8 +130,8 @@ public class PanelPrestamo extends javax.swing.JPanel {
         }
     }
 
-    /*
-    Actualizamos la información del ComboBox Encargado
+    /**
+     * Actualizamos la información del ComboBox Encargado
      */
     public void rellenarComboEncargado() {
         for (int i = 0; i < listaEncargado.size(); i++) {
@@ -134,8 +139,8 @@ public class PanelPrestamo extends javax.swing.JPanel {
         }
     }
 
-    /*
-    Actualizamos la información del ComboBox Libro
+    /**
+     * Actualizamos la información del ComboBox Libro
      */
     public void rellenarComboLibro() {
         for (int i = 0; i < listaLibro.size(); i++) {
@@ -179,7 +184,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(98, 193, 222));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregarL.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/agregarL.png"))); // NOI18N
         jButton1.setText("Agregar   ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +194,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
         jButton2.setBackground(new java.awt.Color(98, 193, 222));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/actualizar.png"))); // NOI18N
         jButton2.setText("Actualizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,8 +204,8 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
 
         jButton3.setBackground(new java.awt.Color(98, 193, 222));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
-        jButton3.setText("Eliminar");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/eliminar.png"))); // NOI18N
+        jButton3.setText("Eliminar  ");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -303,7 +308,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
 
         jComboBox_isbn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- - ISBN - -" }));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrar.png"))); // NOI18N
         jButton5.setText("Limpiar");
         jButton5.setContentAreaFilled(false);
         jButton5.setMaximumSize(new java.awt.Dimension(83, 24));
@@ -320,39 +325,37 @@ public class PanelPrestamo extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jText_FechaSol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jComboBox_encargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 7, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox_isbn, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jText_FechaEnt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jText_FechaSol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jComboBox_encargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 11, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox_isbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jText_FechaEnt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jButton6))
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox_matricula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jComboBox_matricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(17, Short.MAX_VALUE))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                        .addContainerGap()
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -382,8 +385,8 @@ public class PanelPrestamo extends javax.swing.JPanel {
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    /*
-    Botón para agregar un nuevo elemento (objeto) a la lista
+    /**
+     * Botón para agregar un nuevo elemento (objeto) a la lista
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -422,9 +425,8 @@ public class PanelPrestamo extends javax.swing.JPanel {
                 listaEncargado, listaAlumno, modelo);
 
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /*
-    Botón para eliminar un objeto de la lista
+    /**
+     * Botón para eliminar un objeto de la lista
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (jText_FechaEnt.getText().equals("")) {
@@ -436,20 +438,17 @@ public class PanelPrestamo extends javax.swing.JPanel {
             if (prestamo23 != null) {
                 listaPrestamo = prestController.eliminarPrestamo(listaPrestamo,
                         leerD);
-
                 limpiar();
             } else {
                 JOptionPane.showMessageDialog(null, "No hay registro "
                         + "del prestamo");
-
             }
         }
         prestController.mostrarPrestamo(listaPrestamo, listaLibro,
                 listaEncargado, listaAlumno, modelo);
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    /*
-    Botón para actualizar datos de un objeto dentro de la lista
+    /**
+     * Botón para actualizar datos de un objeto dentro de la lista
      */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Prestamo prestamo1 = new Prestamo();
@@ -470,20 +469,16 @@ public class PanelPrestamo extends javax.swing.JPanel {
                     id, prestamo1);
             prestController.mostrarPrestamo(listaPrestamo, listaLibro,
                     listaEncargado, listaAlumno, modelo);
-
             limpiar();
             jText_FechaSol.setEditable(true);
             List<String> vacio = new ArrayList<>();
             listaIsbn = vacio;
-
         }
-
         jText_FechaSol.setEditable(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    /*
-    Muestra en los cuadros de texto los datos de un objeto seleccionado
-    desde la tabla
+    /**
+     * Muestra en los cuadros de texto los datos de un objeto seleccionado desde
+     * la tabla
      */
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         id = Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(),
@@ -492,16 +487,17 @@ public class PanelPrestamo extends javax.swing.JPanel {
                 1).toString());
         jText_FechaEnt.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
                 2).toString());
-        jComboBox_matricula.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
-                3));
-        jComboBox_encargado.setSelectedItem(jTable1.getValueAt(jTable1.getSelectedRow(),
-                4));
-        String isbn = jTable1.getValueAt(jTable1.getSelectedRow(), 5).toString();
+        jComboBox_matricula.setSelectedItem(jTable1.getValueAt(
+                jTable1.getSelectedRow(), 3));
+        jComboBox_encargado.setSelectedItem(jTable1.getValueAt(
+                jTable1.getSelectedRow(), 4));
+        String isbn = jTable1.getValueAt(jTable1.getSelectedRow(), 5).
+                toString();
         jComboBox_isbn.setSelectedItem(isbn.substring(1, isbn.length() - 1));
-
     }//GEN-LAST:event_jTable1MouseClicked
-
-    //Vacía el contenido de los cuadros de texto
+    /**
+     * Vacía el contenido de los cuadros de texto
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -521,8 +517,9 @@ public class PanelPrestamo extends javax.swing.JPanel {
     private void jComboBox_encargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_encargadoActionPerformed
 
     }//GEN-LAST:event_jComboBox_encargadoActionPerformed
-
-    //Busca un objeto dentro de la lista
+    /**
+     * Busca un objeto dentro de la lista
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         Libro libroBuscar = libroAux.getLibro(listaLibro,
                 jComboBox_isbn.getSelectedItem().toString());
