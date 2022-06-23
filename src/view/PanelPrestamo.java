@@ -205,7 +205,7 @@ public class PanelPrestamo extends javax.swing.JPanel {
 
         jButton3.setBackground(new java.awt.Color(98, 193, 222));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/eliminar.png"))); // NOI18N
-        jButton3.setText("Eliminar  ");
+        jButton3.setText("Eliminar   ");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
