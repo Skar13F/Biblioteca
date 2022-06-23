@@ -43,7 +43,7 @@
               <Color blue="de" green="c1" red="62" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/agregarL.png"/>
+              <Image iconType="3" name="/iconos/agregarL.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar   "/>
           </Properties>
@@ -62,7 +62,7 @@
               <Color blue="de" green="c1" red="62" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/actualizar.png"/>
+              <Image iconType="3" name="/iconos/actualizar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
@@ -81,7 +81,7 @@
               <Color blue="de" green="c1" red="62" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/eliminar.png"/>
+              <Image iconType="3" name="/iconos/eliminar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar   "/>
           </Properties>
@@ -364,7 +364,7 @@
         <Component class="javax.swing.JButton" name="jButton_buscar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/search.png"/>
+              <Image iconType="3" name="/iconos/search.png"/>
             </Property>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -384,7 +384,7 @@
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/borrar.png"/>
+              <Image iconType="3" name="/iconos/borrar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>

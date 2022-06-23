@@ -12,13 +12,17 @@ import pojo.Usuario;
 
 public class UsuarioModel {
 
-    // Método para agregar objetos a la lista Alumno
+    /**
+     * Método para agregar objetos a la lista Alumno
+     */
     public List<Usuario> crearUsuario(List<Usuario> lista, Usuario usuario) {
         lista.add(usuario);
         return lista;
     }
 
-    // Método para eliminar un objeto alumno de la lista
+    /**
+     * Método para eliminar un objeto alumno de la lista
+     */
     public List<Usuario> eliminarUsuario(List<Usuario> lista,
             String matricula) {
         for (int i = 0; i < lista.size(); i++) {
@@ -30,7 +34,9 @@ public class UsuarioModel {
         return lista;
     }
 
-    //Método para buscar un objeto en la lista, retorna nulo si no lo encuentra
+    /**
+     * Método para buscar un objeto en la lista, retorna nulo si no lo encuentra
+     */
     public Usuario getUsuario(List<Usuario> lista, String matricula) {
         Usuario vacio = null;
         for (Usuario usuario : lista) {
@@ -41,7 +47,9 @@ public class UsuarioModel {
         return vacio;
     }
 
-    // Método para actualizar datos de un  objeto en la lista
+    /**
+     * Método para actualizar datos de un objeto en la lista
+     */
     public List<Usuario> actualizarUsuario(List<Usuario> lista,
             Usuario usuario) {
         for (int i = 0; i < lista.size(); i++) {
@@ -54,7 +62,9 @@ public class UsuarioModel {
         return lista;
     }
 
-    // Método para mostrar el contenido de la lista en una tabla
+    /**
+     * Método para mostrar el contenido de la lista en una tabla
+     */
     public void mostrarUsuario(List<Usuario> lista, DefaultTableModel modelo) {
         modelo.setRowCount(0);//resetea la tabla
         for (int i = 0; i < lista.size(); i++) {

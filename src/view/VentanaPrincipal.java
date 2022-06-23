@@ -113,7 +113,6 @@ public class VentanaPrincipal extends javax.swing.JFrame implements
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(950, 600));
-        setPreferredSize(new java.awt.Dimension(950, 600));
 
         contenedor.setPreferredSize(new java.awt.Dimension(800, 400));
         contenedor.setLayout(new java.awt.BorderLayout());
@@ -125,7 +124,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements
         jLabel1.setText("Sistema de Administración de Biblioteca");
         jPanel2.add(jLabel1);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/biblioteca32x32.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/biblioteca32x32.png"))); // NOI18N
         jLabel6.setMaximumSize(new java.awt.Dimension(60, 60));
         jLabel6.setMinimumSize(new java.awt.Dimension(60, 60));
         jPanel2.add(jLabel6);
@@ -135,20 +134,20 @@ public class VentanaPrincipal extends javax.swing.JFrame implements
         jPanel4.setBackground(new java.awt.Color(0, 153, 153));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libros32x32.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/libros32x32.png"))); // NOI18N
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alumno32x32.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/alumno32x32.png"))); // NOI18N
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/encargado32x32.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/encargado32x32.png"))); // NOI18N
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         boton_Enc.setBackground(new java.awt.Color(112, 122, 255));
         boton_Enc.setText("Encargado");
         jPanel4.add(boton_Enc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 105, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prestamo32x32.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/prestamo32x32.png"))); // NOI18N
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         boton_Prest.setBackground(new java.awt.Color(112, 122, 255));

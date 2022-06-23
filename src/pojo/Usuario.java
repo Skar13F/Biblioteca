@@ -1,27 +1,40 @@
-/* Autor: Oscar Fuentes Alvarado
+/**
+ * Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 22 de abril de 2022
  * Fecha de actualización: 09 de junio de 2022
- * Descripción: clase para almacenar los datos del usuario (alumno) 
+ * Descripción: clase para almacenar los datos del usuario (alumno)
  */
 package pojo;
 
-//clase: Entidad abstracta que expresa cualidades
+/**
+ * Clase: Entidad abstracta que expresa cualidades
+ */
 public class Usuario {
-    // atributos: conjunto de características que
-    // comparten entre objetos creados a partir de la misma clase
 
-    // modificador de acceeso: private, public, static, final
+    /**
+     * atributos: conjunto de características que comparten entre objetos
+     * creados a partir de la misma clase
+     *
+     * modificador de acceeso: private, public, static, final
+     */
     private String matricula;
     private String nombre;
     private String carrera;
     private String semestre;
 
-    // constructores: Siempre tiene el mismo nombre que la clase,
-    // generalmente se usa para inicializar los atributos del objeto
+    /**
+     * constructores: Siempre tiene el mismo nombre que la clase, generalmente
+     * se usa para inicializar los atributos del objeto
+     *
+     * Constructor vacío
+     */
     public Usuario() {
 
     }
 
+    /**
+     * Constructor para inicializar atributos
+     */
     public Usuario(String matricula, String nombre, String carrera,
             String semestre) {
         /*
@@ -36,9 +49,9 @@ public class Usuario {
     }
     // @PostConstruct: permite inicializar objetos al iniciar la aplicación
 
-    /*
-	 * métodos: conjunto de instrucciones definidas dentro de una clase y 
-                    realizan una determinada tarea
+    /**
+     * métodos: conjunto de instrucciones definidas dentro de una clase y
+     * realizan una determinada tarea
      */
     public String getMatricula() {
         return matricula;

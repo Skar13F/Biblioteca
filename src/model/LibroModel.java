@@ -1,4 +1,5 @@
-/* Autor: Oscar Fuentes Alvarado
+/**
+ * Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 25 de abril de 2022
  * Fecha de actualización: 17 de junio de 2022
  * Descripción: clase para modelar las operaciones CRUD de la clase Libro
@@ -12,14 +13,19 @@ import pojo.Libro;
 
 public class LibroModel {
 
-    // Método para agregar objetos a la lista de  libros
+    /**
+     * *
+     * Método para agregar objetos a la lista de libros
+     */
     public List<Libro> crearLibro(List<Libro> lista, Libro libro) {
         lista.add(libro);
         return lista;
 
     }
 
-    // Método para eliminar un objeto libro de la lista
+    /**
+     * Método para eliminar un objeto libro de la lista
+     */
     public List<Libro> eliminarLibro(List<Libro> lista, String isbn) {
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getIsbn().compareTo(isbn) == 0) {
@@ -30,7 +36,9 @@ public class LibroModel {
         return lista;
     }
 
-    //Método para buscar un objeto en la lista, retorna nulo si no lo encuentra
+    /**
+     * Método para buscar un objeto en la lista, retorna nulo si no lo encuentra
+     */
     public Libro getLibro(List<Libro> lista, String isbn) {
         Libro vacio = null;
         for (Libro libro : lista) {
@@ -41,7 +49,9 @@ public class LibroModel {
         return vacio;
     }
 
-    // Método para actualizar datos de un  objeto en la lista
+    /**
+     * Método para actualizar datos de un objeto en la lista
+     */
     public List<Libro> actualizarLibro(List<Libro> lista, Libro libro1) {										// de un libro
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getIsbn().compareTo(libro1.getIsbn()) == 0) {
@@ -52,7 +62,9 @@ public class LibroModel {
         return lista;
     }
 
-    // Método para mostrar el contenido de la lista en una tabla
+    /**
+     * Método para mostrar el contenido de la lista en una tabla
+     */
     public void mostrarlibro(List<Libro> lista, DefaultTableModel modelo) {
         modelo.setRowCount(0);//resetea la tabla
         for (int i = 0; i < lista.size(); i++) {

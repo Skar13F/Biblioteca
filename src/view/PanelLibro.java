@@ -1,8 +1,9 @@
-/* Autor: Oscar Fuentes Alvarado
+/**
+ * Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 01 de junio de 2022
  * Fecha de actualización: 20 de junio de 2022
  * Descripción: clase JPanel para controlar las operaciones CRUD
-                aplicados a los objetos Libro
+ * aplicados a los objetos Libro
  */
 package view;
 
@@ -36,8 +37,8 @@ public class PanelLibro extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
     }
 
-    /*
-    Método para borrar el contenido de los cuadros de texto
+    /**
+     * Método para borrar el contenido de los cuadros de texto
      */
     public void limpiar() {
         jText_ISBN.setText("");
@@ -47,8 +48,8 @@ public class PanelLibro extends javax.swing.JPanel {
         jText_Cantidad.setText("");
     }
 
-    /*
-    Método para leer los datos que ingresa el usuario
+    /**
+     * Método para leer los datos que ingresa el usuario
      */
     public Libro leer(Libro libroLeer) {
         libroLeer.setIsbn(jText_ISBN.getText());
@@ -96,7 +97,7 @@ public class PanelLibro extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton_agregar.setBackground(new java.awt.Color(98, 193, 222));
-        jButton_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregarL.png"))); // NOI18N
+        jButton_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/agregarL.png"))); // NOI18N
         jButton_agregar.setText("Agregar   ");
         jButton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +107,7 @@ public class PanelLibro extends javax.swing.JPanel {
         jPanel1.add(jButton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
         jButton_actualizar.setBackground(new java.awt.Color(98, 193, 222));
-        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
+        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/actualizar.png"))); // NOI18N
         jButton_actualizar.setText("Actualizar");
         jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +117,7 @@ public class PanelLibro extends javax.swing.JPanel {
         jPanel1.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
 
         jButton_eliminar.setBackground(new java.awt.Color(98, 193, 222));
-        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
+        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/eliminar.png"))); // NOI18N
         jButton_eliminar.setText("Eliminar   ");
         jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +250,7 @@ public class PanelLibro extends javax.swing.JPanel {
             }
         });
 
-        jButton_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        jButton_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/search.png"))); // NOI18N
         jButton_buscar.setContentAreaFilled(false);
         jButton_buscar.setMaximumSize(new java.awt.Dimension(24, 24));
         jButton_buscar.setMinimumSize(new java.awt.Dimension(24, 24));
@@ -260,7 +261,7 @@ public class PanelLibro extends javax.swing.JPanel {
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrar.png"))); // NOI18N
         jButton5.setText("Limpiar");
         jButton5.setContentAreaFilled(false);
         jButton5.setMaximumSize(new java.awt.Dimension(70, 24));
@@ -348,8 +349,8 @@ public class PanelLibro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_GeneroActionPerformed
 
-    /*
-    Botón para agregar un nuevo elemento (objeto) a la lista
+    /**
+     * Botón para agregar un nuevo elemento (objeto) a la lista
      */
     private void jButton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_agregarActionPerformed
         Libro libro = new Libro();
@@ -379,8 +380,8 @@ public class PanelLibro extends javax.swing.JPanel {
         libController.mostrarlibro(listaLibro, modelo);
     }//GEN-LAST:event_jButton_agregarActionPerformed
 
-    /*
-    Botón para eliminar un objeto de la lista
+    /**
+     * Botón para eliminar un objeto de la lista
      */
     private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
         if (jText_ISBN.getText().equals("")) {
@@ -402,8 +403,8 @@ public class PanelLibro extends javax.swing.JPanel {
         libController.mostrarlibro(listaLibro, modelo);
     }//GEN-LAST:event_jButton_eliminarActionPerformed
 
-    /*
-    Botón para actualizar datos de un objeto dentro de la lista
+    /**
+     * Botón para actualizar datos de un objeto dentro de la lista
      */
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
         Libro libro1 = new Libro();
@@ -421,9 +422,9 @@ public class PanelLibro extends javax.swing.JPanel {
         }
         jText_ISBN.setEditable(true);
     }//GEN-LAST:event_jButton_actualizarActionPerformed
-    /*
-    Muestra en los cuadros de texto los datos de un objeto seleccionado
-    desde la tabla
+    /**
+     * Muestra en los cuadros de texto los datos de un objeto seleccionado desde
+     * la tabla
      */
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jText_ISBN.setEditable(false);
@@ -438,7 +439,9 @@ public class PanelLibro extends javax.swing.JPanel {
         jText_Cantidad.setText(jTable1.getValueAt(jTable1.getSelectedRow(),
                 4).toString());
     }//GEN-LAST:event_jTable1MouseClicked
-    //Busca un objeto dentro de la lista
+    /**
+     * Busca un objeto dentro de la lista
+     */
     private void jButton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_buscarActionPerformed
         limpiar();
         Libro lbuscar = new Libro();
@@ -460,7 +463,9 @@ public class PanelLibro extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton_buscarActionPerformed
 
-    //Vacía el contenido de los cuadros de texto
+    /**
+     * Vacía el contenido de los cuadros de texto
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jText_ISBN.setEditable(true);
         limpiar();
@@ -470,7 +475,9 @@ public class PanelLibro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_CantidadActionPerformed
 
-    //valida que la entrada del teclado sea solo números
+    /**
+     * valida que la entrada del teclado sea solo números
+     */
     private void jText_CantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CantidadKeyTyped
         if (jText_Cantidad.getText().length() > 2) {
             evt.consume();
@@ -482,61 +489,81 @@ public class PanelLibro extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_jText_CantidadKeyTyped
-
+    /**
+     * Valida la longitud de la entrada de texto
+     */
     private void jText_GeneroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_GeneroKeyTyped
         if (jText_Genero.getText().length() >= 15) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_GeneroKeyTyped
-
+    /**
+     * Valida la longitud de la entrada de texto
+     */
     private void jText_TituloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TituloKeyTyped
         if (jText_Titulo.getText().length() >= 30) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_TituloKeyTyped
-
+    /**
+     * Valida la longitud de la entrada de texto
+     */
     private void jText_ISBNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ISBNKeyTyped
         if (jText_ISBN.getText().length() >= 13) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_ISBNKeyTyped
-
+    /**
+     * Valida la longitud de la entrada de texto
+     */
     private void jText_AutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_AutorKeyTyped
         if (jText_Autor.getText().length() >= 25) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_AutorKeyTyped
-
+    /**
+     * Valida la longitud de la entrada de texto
+     */
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         if (jTextField1.getText().length() >= 13) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField1KeyTyped
-
+    /**
+     * Cambia la posición del cursor
+     */
     private void jText_ISBNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_ISBNKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
             jText_Titulo.requestFocus();
         }
     }//GEN-LAST:event_jText_ISBNKeyPressed
-
+    /**
+     * Cambia la posición del cursor
+     */
     private void jText_TituloKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TituloKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
             jText_Genero.requestFocus();
         }
     }//GEN-LAST:event_jText_TituloKeyPressed
-
+    /**
+     * Cambia la posición del cursor
+     */
     private void jText_GeneroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_GeneroKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
             jText_Autor.requestFocus();
         }
     }//GEN-LAST:event_jText_GeneroKeyPressed
-
+    /**
+     * Cambia la posición del cursor
+     */
     private void jText_AutorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_AutorKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
             jText_Cantidad.requestFocus();
         }
     }//GEN-LAST:event_jText_AutorKeyPressed
-
+    /**
+     * Cambia la posición del cursor
+     */
     private void jText_CantidadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CantidadKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
             jButton_agregar.requestFocus();

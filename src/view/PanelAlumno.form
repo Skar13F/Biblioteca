@@ -43,7 +43,7 @@
               <Color blue="de" green="c1" red="62" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/agregar.png"/>
+              <Image iconType="3" name="/iconos/agregar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar   "/>
           </Properties>
@@ -62,7 +62,7 @@
               <Color blue="de" green="c1" red="62" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/actualizar.png"/>
+              <Image iconType="3" name="/iconos/actualizar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
@@ -81,7 +81,7 @@
               <Color blue="de" green="c1" red="62" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/eliminar.png"/>
+              <Image iconType="3" name="/iconos/eliminar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Eliminar   "/>
           </Properties>
@@ -119,13 +119,11 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="jText_Matricula" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jComboBox_carrera" min="-2" pref="178" max="-2" attributes="0"/>
+                              <Component id="jComboBox_carrera" min="-2" pref="108" max="-2" attributes="0"/>
+                              <Component id="jText_Matricula" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -293,7 +291,7 @@
         <Component class="javax.swing.JButton" name="jButton_buscar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/search.png"/>
+              <Image iconType="3" name="/iconos/search.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -305,7 +303,7 @@
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/borrar.png"/>
+              <Image iconType="3" name="/iconos/borrar.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>

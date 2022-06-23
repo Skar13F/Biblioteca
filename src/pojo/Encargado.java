@@ -1,4 +1,5 @@
-/* Autor: Oscar Fuentes Alvarado
+/**
+ * Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 22 de abril de 2022
  * Fecha de actualización: 09 de junio de 2022
  * Descripción: clase para modelar al encargado de la biblioteca
@@ -11,17 +12,25 @@ public class Encargado {
     private String nombre;
     private String telefono;
 
-    public Encargado() {// constructor vacío
+    /**
+     * Constructor vacío
+     */
+    public Encargado() {
 
     }
-    
-    //constructor para inicializar atributos de la clase
+
+    /**
+     * Constructor para inicializar atributos de la clase
+     */
     public Encargado(String codTrab, String nombre, String telefono) {
         this.codTrab = codTrab;
         this.nombre = nombre;
         this.telefono = telefono;
     }
 
+    /**
+     * Métodos set y get de los atributos
+     */
     public String getCodTrab() {
         return codTrab;
     }

@@ -1,4 +1,5 @@
-/* Autor: Oscar Fuentes Alvarado
+/**
+ * Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 25 de abril de 2022
  * Fecha de actualización: 17 de junio de 2022
  * Descripción: clase para modelar las operaciones CRUD de la clase encargado
@@ -12,14 +13,18 @@ import pojo.Encargado;
 
 public class EncargadoModel {
 
-    // Método para agregar objetos a la lista de encargados
+    /**
+     * Método para agregar objetos a la lista de encargados
+     */
     public List<Encargado> crearEncargado(List<Encargado> lista2,
             Encargado encargado) {
         lista2.add(encargado);
         return lista2;
     }
 
-    // Método para eliminar un objeto encargado de la lista
+    /**
+     * Método para eliminar un objeto encargado de la lista
+     */
     public List<Encargado> eliminarEncargado(List<Encargado> lista,
             String codTrab) {
         for (Encargado encargado : lista) {
@@ -31,7 +36,9 @@ public class EncargadoModel {
         return lista;
     }
 
-    //Método para buscar un objeto en la lista, retorna nulo si no lo encuentra
+    /**
+     * Método para buscar un objeto en la lista, retorna nulo si no lo encuentra
+     */
     public Encargado getEncargado(List<Encargado> lista, String CodTrab) {
         Encargado vacio = null;
         for (Encargado encargado : lista) {
@@ -42,7 +49,9 @@ public class EncargadoModel {
         return vacio;
     }
 
-    // Método para actualizar datos de un  objeto en la lista
+    /**
+     * Método para actualizar datos de un objeto en la lista
+     */
     public List<Encargado> actualizarEncargado(List<Encargado> lista,
             Encargado encargado) {
         for (int i = 0; i < lista.size(); i++) {
@@ -55,7 +64,9 @@ public class EncargadoModel {
         return lista;
     }
 
-    // Método para mostrar el contenido de la lista en una tabla
+    /**
+     * Método para mostrar el contenido de la lista en una tabla
+     */
     public void mostrarEncargado(List<Encargado> lista,
             DefaultTableModel modelo) {
         modelo.setRowCount(0);//resetea la tabla

@@ -1,4 +1,5 @@
-/* Autor: Oscar Fuentes Alvarado
+/**
+ * Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 25 de abril de 2022
  * Fecha de actualización: 09 de junio de 2022
  * Descripción: clase para modelar los prestamos de libro
@@ -18,12 +19,18 @@ public class Prestamo {
     private String matricula;
     private String codTrab;
 
-    public Prestamo() {//constructor vacío
+    /**
+     * Constructor vacío
+     */
+    public Prestamo() {
     }
 
+    /**
+     * Constructor para inicializar atributos de la clase
+     */
     public Prestamo(int id, Date fechaSol, Date fechaEnt,
             List<String> nombres, String matricula, String codTrab,
-            String isbn) {//constructor para inicializar atributos de la clase
+            String isbn) {
         this.id = id;
         this.fechaSol = fechaSol;
         this.fechaEnt = fechaEnt;
@@ -32,6 +39,9 @@ public class Prestamo {
         this.codTrab = codTrab;
     }
 
+    /**
+     * Métodos set y get
+     */
     public int getId() {
         return id;
     }
@@ -55,8 +65,6 @@ public class Prestamo {
     public void setFechaEnt(Date fechaEnt) {
         this.fechaEnt = fechaEnt;
     }
-
-    
 
     public List<String> getNombres() {
         return nombres;

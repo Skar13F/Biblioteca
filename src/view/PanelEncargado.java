@@ -1,8 +1,9 @@
-/* Autor: Oscar Fuentes Alvarado
+/**
+ * Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 03 de junio de 2022
  * Fecha de actualización: 22 de junio de 2022
  * Descripción: clase JPanel para controlar las operaciones CRUD
-                aplicados a los objetos Encargado
+ * aplicados a los objetos Encargado
  */
 package view;
 
@@ -37,8 +38,8 @@ public class PanelEncargado extends javax.swing.JPanel {
         jTable1.getTableHeader().setReorderingAllowed(false);
     }
 
-    /*
-    Método para limpiar(vaciar) los cuadros de texto
+    /**
+     * Método para limpiar(vaciar) los cuadros de texto
      */
     public void limpiar() {
         jText_Codigo.setText("");
@@ -46,8 +47,8 @@ public class PanelEncargado extends javax.swing.JPanel {
         jText_Telefono.setText("");
     }
 
-    /*
-    Método para validar que la entrada del teclado sea simplemente numérica
+    /**
+     * Método para validar que la entrada del teclado sea simplemente numérica
      */
     public boolean isNumeric(String datos) {
         for (int i = 0; i < datos.length(); i++) {
@@ -100,7 +101,7 @@ public class PanelEncargado extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton_agregar.setBackground(new java.awt.Color(98, 193, 222));
-        jButton_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
+        jButton_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/agregar.png"))); // NOI18N
         jButton_agregar.setText("Agregar   ");
         jButton_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +111,7 @@ public class PanelEncargado extends javax.swing.JPanel {
         jPanel1.add(jButton_agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
         jButton_actualizar.setBackground(new java.awt.Color(98, 193, 222));
-        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
+        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/actualizar.png"))); // NOI18N
         jButton_actualizar.setText("Actualizar");
         jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +121,7 @@ public class PanelEncargado extends javax.swing.JPanel {
         jPanel1.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 130, -1));
 
         jButton_eliminar.setBackground(new java.awt.Color(98, 193, 222));
-        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar.png"))); // NOI18N
+        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/eliminar.png"))); // NOI18N
         jButton_eliminar.setText("Eliminar   ");
         jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,7 +226,7 @@ public class PanelEncargado extends javax.swing.JPanel {
             }
         });
 
-        jButton_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        jButton_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/search.png"))); // NOI18N
         jButton_buscar.setBorderPainted(false);
         jButton_buscar.setContentAreaFilled(false);
         jButton_buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +235,7 @@ public class PanelEncargado extends javax.swing.JPanel {
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/borrar.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/borrar.png"))); // NOI18N
         jButton5.setText("Limpiar");
         jButton5.setContentAreaFilled(false);
         jButton5.setMaximumSize(new java.awt.Dimension(83, 24));
@@ -312,8 +313,8 @@ public class PanelEncargado extends javax.swing.JPanel {
     private void jText_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_TelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_TelefonoActionPerformed
-    /*
-    Botón para agregar un nuevo elemento (objeto) a la lista
+    /**
+     * Botón para agregar un nuevo elemento (objeto) a la lista
      */
     private void jButton_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_agregarActionPerformed
         Encargado encargado = new Encargado();
@@ -355,8 +356,8 @@ public class PanelEncargado extends javax.swing.JPanel {
         encController.mostrarEncargado(listaEncargado, modelo);
     }//GEN-LAST:event_jButton_agregarActionPerformed
 
-    /*
-    Botón para eliminar un objeto de la lista
+    /**
+     * Botón para eliminar un objeto de la lista
      */
     private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
         if (jText_Codigo.getText().equals("")) {
@@ -378,8 +379,8 @@ public class PanelEncargado extends javax.swing.JPanel {
         encController.mostrarEncargado(listaEncargado, modelo);
     }//GEN-LAST:event_jButton_eliminarActionPerformed
 
-    /*
-    Botón para actualizar datos de un objeto dentro de la lista
+    /**
+     * Botón para actualizar datos de un objeto dentro de la lista
      */
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
         Encargado encargado1 = new Encargado();
@@ -413,9 +414,9 @@ public class PanelEncargado extends javax.swing.JPanel {
         jText_Codigo.setEditable(true);
     }//GEN-LAST:event_jButton_actualizarActionPerformed
 
-    /*
-    Muestra en los cuadros de texto los datos de un objeto seleccionado
-    desde la tabla
+    /**
+     * Muestra en los cuadros de texto los datos de un objeto seleccionado desde
+     * la tabla
      */
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         jText_Codigo.setEditable(false);
@@ -427,7 +428,9 @@ public class PanelEncargado extends javax.swing.JPanel {
                 2).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
-    //Busca un objeto en la lista
+    /**
+     * Busca un objeto en la lista
+     */
     private void jButton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_buscarActionPerformed
         Encargado eBuscar = new Encargado();
         if (jTextField1.getText().equals("")) {
@@ -446,12 +449,16 @@ public class PanelEncargado extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jButton_buscarActionPerformed
-    //Vacía el contenido de los cuadros de texto
+    /**
+     * Vacía el contenido de los cuadros de texto
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jText_Codigo.setEditable(true);
         limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    /**
+     * Valida la entrada del teclado, además de la longitud
+     */
     private void jText_CodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CodigoKeyTyped
         if (jText_Codigo.getText().length() >= 7) {
             evt.consume();
@@ -462,13 +469,17 @@ public class PanelEncargado extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jText_CodigoKeyTyped
-
+    /**
+     * Valida la longitud de entrada del teclado
+     */
     private void jText_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombreKeyTyped
         if (jText_Nombre.getText().length() >= 25) {
             evt.consume();
         }
     }//GEN-LAST:event_jText_NombreKeyTyped
-
+    /**
+     * Valida la entrada del teclado, además de la longitud
+     */
     private void jText_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TelefonoKeyTyped
         if (jText_Telefono.getText().length() >= 10) {
             evt.consume();
@@ -479,7 +490,9 @@ public class PanelEncargado extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jText_TelefonoKeyTyped
-
+    /**
+     * Valida la entrada del teclado, además de la longitud
+     */
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         if (jText_Codigo.getText().length() >= 7) {
             evt.consume();
@@ -490,32 +503,39 @@ public class PanelEncargado extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jTextField1KeyTyped
-
+    /**
+     * Cambia la posición del cursor
+     */
     private void jText_CodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_CodigoKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
             jText_Nombre.requestFocus();
-
         }
     }//GEN-LAST:event_jText_CodigoKeyPressed
 
     private void jText_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText_CodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_CodigoActionPerformed
-
+    /**
+     * Cambia la posición del cursor
+     */
     private void jText_NombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_NombreKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
             jText_Telefono.requestFocus();
         }
     }//GEN-LAST:event_jText_NombreKeyPressed
-
+    /**
+     * Cambia la posición del cursor
+     */
     private void jText_TelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jText_TelefonoKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER) {
             jButton_agregar.requestFocus();
         }
     }//GEN-LAST:event_jText_TelefonoKeyPressed
-
+    /**
+     * Cambia la posición del cursor
+     */
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-if (evt.getKeyCode()==evt.VK_ENTER) {
+        if (evt.getKeyCode() == evt.VK_ENTER) {
             jButton_buscar.requestFocus();
         }
     }//GEN-LAST:event_jTextField1KeyPressed

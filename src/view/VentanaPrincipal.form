@@ -6,9 +6,6 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[950, 600]"/>
     </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[950, 600]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -71,7 +68,7 @@
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/biblioteca32x32.png"/>
+                  <Image iconType="3" name="/iconos/biblioteca32x32.png"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[60, 60]"/>
@@ -102,7 +99,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/libros32x32.png"/>
+                  <Image iconType="3" name="/iconos/libros32x32.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -114,7 +111,7 @@
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/alumno32x32.png"/>
+                  <Image iconType="3" name="/iconos/alumno32x32.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -126,7 +123,7 @@
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/encargado32x32.png"/>
+                  <Image iconType="3" name="/iconos/encargado32x32.png"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -151,7 +148,7 @@
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/prestamo32x32.png"/>
+                  <Image iconType="3" name="/iconos/prestamo32x32.png"/>
                 </Property>
               </Properties>
               <Constraints>

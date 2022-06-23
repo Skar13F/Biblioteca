@@ -1,4 +1,5 @@
-/* Autor: Oscar Fuentes Alvarado
+/**
+ * Autor: Oscar Fuentes Alvarado
  * Fecha de creación: 22 de abril de 2022
  * Fecha de actualización: 06 de junio de 2022
  * Descripción: clase para almacenar los datos de un libro
@@ -13,11 +14,17 @@ public class Libro {
     private short cantidad;
     private String clasificacion;
 
-    public Libro() {//constructor vacío
+    /**
+     * Constructor vacío
+     */
+    public Libro() {
     }
 
+    /**
+     * Constructor para inicializar atributos
+     */
     public Libro(String isbn, String autor, String titulo, short cantidad,
-            String clasificacion) {//constructor para inicializar atributos
+            String clasificacion) {
         this.isbn = isbn;
         this.autor = autor;
         this.titulo = titulo;
@@ -25,6 +32,9 @@ public class Libro {
         this.clasificacion = clasificacion;
     }
 
+    /**
+     * Métodos set y get
+     */
     public String getClasificacion() {
         return clasificacion;
     }
